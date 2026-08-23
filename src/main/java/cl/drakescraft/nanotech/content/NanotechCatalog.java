@@ -147,6 +147,12 @@ public final class NanotechCatalog {
             d("GOD_PRISON_FIELD_CORE", Material.VAULT, "&5God-Prison Field Core", TechnologyBranch.COSMIC, 6, "Right-click inside your ProtectionStone to toggle bounded survival flight."),
             d("TESLA_STEP_EMITTER", Material.LIGHT_WEIGHTED_PRESSURE_PLATE, "&bTesla-Step Emitter", TechnologyBranch.ARC, 5, "Ionizes every airborne step into visible blue-white arcs."),
             d("NANITE_AUREOLE_PROJECTOR", Material.HEART_OF_THE_SEA, "&dNanite Aureole Projector", TechnologyBranch.NANOTECH, 6, "Renders six adaptive orbital domains around advanced armor.")
+            ,d("ENCHANT_ARC_AEGIS", Material.ENCHANTED_BOOK, "&bARC Aegis Enchantment", TechnologyBranch.ARC, 6, "Shift-right-click while wearing advanced Stark armor: extreme damage conversion.")
+            ,d("ENCHANT_NANITE_REGENESIS", Material.ENCHANTED_BOOK, "&cNanite Regenesis Enchantment", TechnologyBranch.NANOTECH, 6, "Repairs the wearer and rebuilds critical armor from nanomass.")
+            ,d("ENCHANT_ZERO_POINT_ANCHOR", Material.ENCHANTED_BOOK, "&dZero-Point Anchor Enchantment", TechnologyBranch.COSMIC, 6, "Cancels one lethal event before a long universal cooldown.")
+            ,d("STARK_STORAGE_VAULT", Material.RED_GLAZED_TERRACOTTA, "&cStark Modular Storage Vault", TechnologyBranch.NANOTECH, 4, "54-slot cargo inventory compatible with Slimefun transport and Networks accessors.")
+            ,d("STARK_NANO_VAULT", Material.BLACK_GLAZED_TERRACOTTA, "&8Stark Nanomass Vault", TechnologyBranch.NANOTECH, 5, "54-slot programmable-matter storage endpoint for Networks and Slimefun cargo.")
+            ,d("STARK_ARMORY_VAULT", Material.LIGHT_GRAY_GLAZED_TERRACOTTA, "&fStark Armory Vault", TechnologyBranch.ARC, 5, "54-slot armor and module depot exposed through standard cargo contracts.")
         );
     }
 

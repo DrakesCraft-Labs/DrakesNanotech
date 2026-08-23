@@ -16,7 +16,7 @@ player kills, invisible attacks, or particle lag.
 
 ## Synthezoid Dominion & Graviton Engineering 0.3.0
 
-- **151 registered Slimefun entries:** components, weapons, hero equipment, suits and artifacts plus
+- **157 registered Slimefun entries:** components, weapons, hero equipment, suits and artifacts plus
   14 fully documented machine heads.
 - **Eight documented multiblocks:** including the 41x41x29 Dying-Star Dyson Foundry and the
   ProtectionStone-sized God-Prison Graviton Cage.
@@ -28,6 +28,13 @@ player kills, invisible attacks, or particle lag.
 - **God-Prison flight:** the owner activates survival flight only inside their ProtectionStone,
   consumes physical 4 GJ cells according to real protected volume, and is hard-limited to 20 blocks
   above and 10 below activation altitude. Leaving any boundary revokes flight immediately.
+- **Stark technological enchantments:** ARC Aegis VI converts 92% of incoming damage, Nanite
+  Regenesis VI consumes Nanomass Canisters to heal and repair equipped armor, and Zero-Point
+  Anchor VI rejects one lethal state before a 30-minute cooldown. Enhancements are stored in PDC
+  and survive restarts, renames and lore changes.
+- **Stark storage network:** three protected 54-slot vaults implement the native Slimefun cargo
+  inventory contract. Slimefun Cargo can insert/withdraw directly and Networks can reach them
+  through its standard inventory accessors; contents are returned safely when the block breaks.
 - **Precision Stark engineering:** micro ARC capacitors, repulsor optics, flight gyros, vectoring
   nozzles, nanite injectors, thermal layers, power buses and servo clusters feed specialized armor.
 - **Expanded Iron armor program:** Mark VI, VII, XVII, XXV, XXXVIII, XLVI and LXXXV systems,
@@ -131,7 +138,7 @@ workspace it is installed from `Slimefun4-Drake` with `mvn -DskipTests install`.
 - **0.5 Infinity:** six independent boss chains, capsules, gauntlet GUI, safe PvE Snap and audit log.
 - **0.6 Beyond Time:** Pym/Kang engineering, temporal anchors and the Universal Forge.
 
-The catalog now covers 151 distinct registered entries; releases remain chapter-based so
+The catalog now covers 157 distinct registered entries; releases remain chapter-based so
 every recipe, PDC state, protection boundary and effect budget can be tested before production.
 
 ## License and trademarks

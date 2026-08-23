@@ -5,6 +5,7 @@ import cl.drakescraft.nanotech.gameplay.CosmicExposureListener;
 import cl.drakescraft.nanotech.gameplay.NanotechWeaponListener;
 import cl.drakescraft.nanotech.gameplay.HeroSuitListener;
 import cl.drakescraft.nanotech.gameplay.GodPrisonFieldService;
+import cl.drakescraft.nanotech.gameplay.StarkArmorEnchantService;
 import cl.drakescraft.nanotech.protection.ProtectionGate;
 import com.github.drakescraft_labs.slimefun4.api.SlimefunAddon;
 import org.bukkit.command.Command;
@@ -33,6 +34,9 @@ public final class DrakesNanotechPlugin extends JavaPlugin implements SlimefunAd
             HeroSuitListener heroSuits = new HeroSuitListener(this, content);
             getServer().getPluginManager().registerEvents(heroSuits, this);
             getServer().getScheduler().runTaskTimer(this, heroSuits::renderAdvancedArmor, 1L, 2L);
+            StarkArmorEnchantService armorEnchantments = new StarkArmorEnchantService(this, content);
+            getServer().getPluginManager().registerEvents(armorEnchantments, this);
+            armorEnchantments.runTaskTimer(this, 100L, 100L);
             getServer().getPluginManager().registerEvents(new CosmicExposureListener(this, content), this);
             getLogger().info("DrakesNanotech loaded " + content.itemCount() + " items, " + content.machineCount()
                     + " machines and " + content.multiblockCount() + " documented multiblocks.");

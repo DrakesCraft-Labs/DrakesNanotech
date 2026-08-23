@@ -40,7 +40,12 @@ public final class NanotechContent {
                 "", "&8Branch: &f" + title(definition.branch()), "&8Technology Tier: &e" + definition.tier(),
                 "&7" + definition.description(), "", "&4Ultra-endgame component");
         items.put(definition.id(), stack);
-        new SlimefunItem(group, stack, RecipeType.ENHANCED_CRAFTING_TABLE, expensiveRecipe(definition)).register(plugin);
+        ItemStack[] recipe = expensiveRecipe(definition);
+        if (definition.id().matches("STARK_(STORAGE|NANO|ARMORY)_VAULT")) {
+            new StarkStorageBlock(group, stack, recipe).register(plugin);
+        } else {
+            new SlimefunItem(group, stack, RecipeType.ENHANCED_CRAFTING_TABLE, recipe).register(plugin);
+        }
     }
 
     private void registerMachine(MachineDefinition definition) {

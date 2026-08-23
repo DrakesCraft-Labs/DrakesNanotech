@@ -13,7 +13,11 @@ class NanotechCatalogTest {
         var ids = new HashSet<String>();
         NanotechCatalog.items().forEach(item -> assertTrue(ids.add(item.id()), "duplicate id " + item.id()));
         NanotechCatalog.machines().forEach(machine -> assertTrue(ids.add(machine.id()), "duplicate id " + machine.id()));
-        assertTrue(ids.size() >= 151);
+        assertTrue(ids.size() >= 157);
+        assertTrue(ids.contains("ENCHANT_ARC_AEGIS"));
+        assertTrue(ids.contains("ENCHANT_NANITE_REGENESIS"));
+        assertTrue(ids.contains("ENCHANT_ZERO_POINT_ANCHOR"));
+        assertTrue(ids.contains("STARK_STORAGE_VAULT"));
     }
 
     @Test
