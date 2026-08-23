@@ -5,6 +5,11 @@ head. All listed machines are registered energy consumers with a protected menu,
 buffer enforcement, secured batch control and safe inventory drops. A batch cannot complete without
 its registered prerequisite, sufficient stored energy and output space.
 
+Processing is transactional in 0.3.0: clicking the control atomically charges the complete rated
+budget (`J/t × listed seconds × 20`), consumes one registered input and commits the output. The
+listed seconds define the energy contract; the menu does not pretend to animate a timer it cannot
+resume safely after chunk unloads.
+
 | Machine | Tier | Draw | Buffer | Time | Input → Output | Hazard / containment | Safe shutdown |
 |---|---:|---:|---:|---:|---|---|---|
 | Carbyne Pulverizer | 1 | 256 J/t | 2 MJ | 16s | Carbon + alloy → precursor | Carbon dust / Industrial I | Stops on full output |
