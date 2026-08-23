@@ -18,9 +18,11 @@ public final class NanotechContent {
     private final DrakesNanotechPlugin plugin;
     private final Map<String, SlimefunItemStack> items = new HashMap<>();
     private final ItemGroup group;
+    private final AddonItemResolver addons;
 
     public NanotechContent(DrakesNanotechPlugin plugin) {
         this.plugin = plugin;
+        this.addons = new AddonItemResolver(plugin);
         ItemStack icon = new ItemStack(Material.HEART_OF_THE_SEA);
         var meta = icon.getItemMeta();
         meta.setDisplayName("§b§lDrakes Nanotech");
@@ -33,6 +35,7 @@ public final class NanotechContent {
     public void registerAll() {
         for (ContentDefinition definition : NanotechCatalog.items()) registerItem(definition);
         for (MachineDefinition definition : NanotechCatalog.machines()) registerMachine(definition);
+        addons.logSummary();
     }
 
     private void registerItem(ContentDefinition definition) {
@@ -69,18 +72,13 @@ public final class NanotechContent {
 
     private ItemStack[] expensiveRecipe(ContentDefinition definition) {
         ItemStack center = progressionCore(definition);
-        Material edge = switch (definition.branch()) {
-            case ARC -> Material.COPPER_INGOT;
-            case NANOTECH -> Material.ECHO_SHARD;
-            case GAMMA -> Material.LIME_DYE;
-            case WAKANDAN -> Material.SCULK;
-            case LATVERIAN -> Material.EMERALD;
-            case COSMIC -> Material.AMETHYST_SHARD;
-            default -> Material.IRON_INGOT;
-        };
-        return new ItemStack[]{new ItemStack(edge), new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(edge),
-                new ItemStack(Material.QUARTZ), center, new ItemStack(Material.QUARTZ),
-                new ItemStack(edge), new ItemStack(Material.DIAMOND_BLOCK), new ItemStack(edge)};
+        ItemStack circuit = controlIngredient(definition.tier());
+        ItemStack power = powerIngredient(definition.tier());
+        ItemStack structure = addons.require("tier " + definition.tier() + " structural frame",
+                definition.tier() >= 4 ? "SUPREME_ALLOY_TITANIUM" : "REINFORCED_PLATE",
+                "REINFORCED_ALLOY_INGOT");
+        return new ItemStack[]{structure.clone(), circuit.clone(), structure.clone(),
+                power.clone(), center, power.clone(), structure.clone(), circuit.clone(), structure.clone()};
     }
 
     /** Enforces branch prerequisites so tier labels represent progression, not decorative rarity. */
@@ -105,9 +103,38 @@ public final class NanotechContent {
         ItemStack core = definition.tier() >= 5 && items.containsKey("COSMIC_CIRCUIT")
                 ? items.get("COSMIC_CIRCUIT").clone()
                 : items.get("ARC_REACTOR_CORE").clone();
-        return new ItemStack[]{new ItemStack(Material.NETHERITE_INGOT), new ItemStack(Material.HEAVY_CORE), new ItemStack(Material.NETHERITE_INGOT),
-                new ItemStack(Material.COMPARATOR), core, new ItemStack(Material.COMPARATOR),
-                new ItemStack(Material.OBSIDIAN), new ItemStack(Material.DIAMOND_BLOCK), new ItemStack(Material.OBSIDIAN)};
+        ItemStack circuit = controlIngredient(definition.tier());
+        ItemStack power = powerIngredient(definition.tier());
+        ItemStack cargo = addons.require(definition.name() + " logistics", definition.tier() >= 4
+                ? new String[]{"NETWORK_CONTROLLER", "NETWORK_BRIDGE", "CARGO_MANAGER"}
+                : new String[]{"CARGO_MOTOR", "ELECTRIC_MOTOR"});
+        return new ItemStack[]{power.clone(), circuit.clone(), power.clone(), cargo.clone(), core,
+                cargo.clone(), power.clone(), circuit.clone(), power.clone()};
+    }
+
+    /** Raises control complexity from basic SF electronics to real Infinity circuitry. */
+    private ItemStack controlIngredient(int tier) {
+        return switch (tier) {
+            case 0 -> addons.require("salvaged controls", "BASIC_CIRCUIT_BOARD");
+            case 1, 2 -> addons.require("advanced controls", "ADVANCED_CIRCUIT_BOARD");
+            case 3 -> addons.require("Supreme control substrate", "SUPREME_CARD_ELECTRIC_MOTOR", "ADVANCED_CIRCUIT_BOARD");
+            case 4 -> addons.require("networked control substrate", "NETWORK_CONTROLLER", "NETWORK_BRIDGE", "ADVANCED_CIRCUIT_BOARD");
+            case 5 -> addons.require("infinite control substrate", "INFINITE_CIRCUIT", "INFINITE_MACHINE_CIRCUIT", "NETWORK_CONTROLLER");
+            default -> addons.require("universal control substrate", "INFINITE_MACHINE_CIRCUIT", "INFINITY_MATRIX", "INFINITE_CIRCUIT");
+        };
+    }
+
+    /** Forces players to build Slimefun power infrastructure, including Supreme Ventus progression. */
+    private ItemStack powerIngredient(int tier) {
+        return switch (tier) {
+            case 0 -> addons.require("salvaged drive", "ELECTRIC_MOTOR");
+            case 1 -> addons.require("ARC regulation", "ENERGY_REGULATOR", "SMALL_CAPACITOR");
+            case 2 -> addons.require("nanotech logistics", "CARGO_MOTOR", "ENERGIZED_CAPACITOR");
+            case 3 -> addons.require("Ventus power", "SUPREME_BASIC_VENTUS_GENERATOR", "SUPREME_CETRUS_VENTUS", "ENERGIZED_CAPACITOR");
+            case 4 -> addons.require("sovereign network power", "NETWORK_CAPACITOR_2", "SUPREME_VENTUS_GENERATOR", "CARBONADO_EDGED_CAPACITOR");
+            case 5 -> addons.require("cosmic power", "INFINITY_CAPACITOR", "NETWORK_CAPACITOR_4", "SUPREME_SUPREME_CAPACITOR");
+            default -> addons.require("universal power", "INFINITY_REACTOR", "INFINITY_CAPACITOR", "SUPREME_SUPREME_GENERATOR");
+        };
     }
 
     /** Connects every machine to one registered input and output; startup tests audit these IDs. */

@@ -74,6 +74,11 @@ player kills, invisible attacks, or particle lag.
 
 ## Technology tree
 
+### Cross-addon infrastructure
+
+Recipes use registered Slimefun components rather than vanilla substitutes. Early engineering requires Basic and Advanced Circuit Boards, Electric Motors, Energy Regulators and Cargo Motors. Mid-game laboratories require Supreme Ventus power and Networks control hardware. Cosmic and universal programs consume Infinity circuits, capacitors, matrices and reactor infrastructure. At startup the addon resolves every dependency by stable Slimefun ID and logs the contributing addons; a missing required component fails registration visibly instead of silently making the recipe easier.
+
+
 | Tier | Program | What it proves |
 |---:|---|---|
 | 0 | Salvaged Technology | Precision parts and basic control hardware |
