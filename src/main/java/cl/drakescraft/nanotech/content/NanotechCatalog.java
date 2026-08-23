@@ -177,6 +177,7 @@ public final class NanotechCatalog {
             m("SINGULARITY_GROWTH_CHAMBER", "Singularity Growth Chamber", TechnologyBranch.COSMIC, 6, 32768, 2_000_000_000, 300, "Domain signature + boss core", "Contained cosmic replica", "Reality collapse", "Containment VI", "Emergency stasis; zero block damage", texture)
             ,m("STELLAR_SWARM_FABRICATOR", "Stellar Swarm Fabricator", TechnologyBranch.COSMIC, 6, 262144, 2_000_000_000, 240, "Nanocells + new element + solar lattice", "Dyson swarm segment", "Coronal induction", "Stellar VI", "Defocuses every lens and grounds collector charge", texture)
             ,m("GRAVITON_FIELD_REGULATOR", "Graviton Field Regulator", TechnologyBranch.COSMIC, 6, 131072, 2_000_000_000, 180, "Graviton coils + prison cells + quantum processor", "God-Prison field core", "Inertial shear", "Owner region VI", "Revokes flight immediately and preserves every block", texture)
+            ,m("UNIVERSAL_AUTOMATION_AI", "Universal Automation Intelligence", TechnologyBranch.NANOTECH, 7, 131072, 2_000_000_000, 259200, "Target template + registered recipe materials", "One audited target item", "Long-running state corruption", "Transactional AI VII", "Persists progress and never consumes the target template", texture)
         );
     }
 

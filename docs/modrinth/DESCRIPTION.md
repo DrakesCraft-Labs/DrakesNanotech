@@ -3,8 +3,8 @@
 An ultra-endgame **Slimefun expansion** for ARC engineering, programmable matter, hero equipment,
 gamma containment and six-domain cosmic technology.
 
-Build infrastructure—not instant god items. The 0.3 catalog contains **157 registered entries**,
-fourteen operational textured-head processors with powered menus, and eight massive multiblock
+Build infrastructure—not instant god items. The 0.3 catalog contains **158 registered entries**,
+fifteen operational textured-head processors with powered menus, and eight massive multiblock
 designs. Tiny components—optical lenses, flight gyros, vectoring nozzles, heat sinks, nanite
 injectors and power buses—feed specialized Mark armor, War Machine systems, kinetic shields and
 the Universal Infinity Forge.
@@ -18,6 +18,7 @@ the Universal Infinity Forge.
 - eight documented multiblocks from a 7x7 cleanroom to a 41x41x29 dying-star Dyson foundry
 - Stark technological enchantments and three 54-slot Slimefun Cargo / Networks-compatible vaults
 - owner-bound, volume-metered God-Prison flight inside ProtectionStones
+- recipe-aware Universal Automation AI with persistent powered progress and no-loss commits
 - escalating bare-artifact exposure with clear warnings
 - fail-closed WorldGuard and ProtectionStones lockout around every large-area weapon
 - zero block explosions, bounded effects and English-only content

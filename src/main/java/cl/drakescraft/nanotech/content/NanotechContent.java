@@ -57,6 +57,10 @@ public final class NanotechContent {
                 "&6Containment: &f" + definition.containment(), "&cShutdown: &f" + definition.shutdown(),
                 "", "&aSingle-block machine &8· &7Owner protections apply");
         items.put(definition.id(), stack);
+        if (definition.id().equals("UNIVERSAL_AUTOMATION_AI")) {
+            new UniversalAutomationAI(plugin, group, stack, machineRecipe(definition)).register(plugin);
+            return;
+        }
         String[] process = machineProcess(definition.id());
         ItemStack output = items.get(process[1]).clone();
         if (process.length > 2) output.setAmount(Integer.parseInt(process[2]));

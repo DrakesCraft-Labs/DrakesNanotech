@@ -26,6 +26,21 @@ resume safely after chunk unloads.
 | Singularity Growth Chamber | 6 | 32,768 J/t | 2 GJ | 300s | Signature + boss core → replica | Reality collapse / VI | Stasis, zero block damage |
 | Stellar Swarm Fabricator | 6 | 262,144 J/t | 2 GJ | 240s | Nanocell → Dyson segment | Coronal induction / VI | Defocuses collector charge |
 | Graviton Field Regulator | 6 | 131,072 J/t | 2 GJ | 180s | Graviton coil → field core | Inertial shear / VI | Revokes flight, preserves blocks |
+| Universal Automation Intelligence | 7 | Dynamic, max 131,072 J/t | 2 GJ | 30s–7d; Infinity min 3d | Target recipe → target | Persistent state / Transactional VII | Output-first commit; template never consumed |
+
+## Universal Automation Intelligence
+
+Place one real Slimefun item in the template slot. The AI reads its registered nine-slot recipe,
+groups identical vanilla and Slimefun IDs, estimates material rarity, and exposes the required
+powered duration and J/t draw. Cargo and Networks may insert materials into the 18 reserved input
+slots and withdraw only from output. Progress advances only while all materials remain present,
+the output fits and the machine receives its full draw.
+
+The template and ingredients are not consumed during processing. Progress, target, required ticks
+and transaction phase live in Slimefun BlockStorage and resume after a restart. Completion runs on
+the main thread and creates output before debiting materials. Therefore a process crash cannot lose
+an Infinity item or its ingredients; the deliberately accepted worst case is a detectable duplicate
+if the JVM dies inside the tiny output-first commit window.
 
 ## Required operating menu
 

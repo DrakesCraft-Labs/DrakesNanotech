@@ -12,5 +12,6 @@ const machines=[
 ['Cosmic Spectrometer','Cosmic Fragment','Cosmic Circuit','16,384 J/t · 180s'],
 ['Singularity Growth Chamber','Cosmic Circuit','Power Stone','32,768 J/t · 300s'],
 ['Stellar Swarm Fabricator','Programmable Nanocell','Dyson Swarm Segment','262,144 J/t · 240s'],
-['Graviton Field Regulator','Graviton Coil','God-Prison Field Core','131,072 J/t · 180s']];
+['Graviton Field Regulator','Graviton Coil','God-Prison Field Core','131,072 J/t · 180s'],
+['Universal Automation AI','Any concrete registered recipe','Audited target output','Dynamic · Infinity min 3 powered days']];
 document.querySelector('#machineRows').innerHTML=machines.map(row=>`<tr>${row.map(cell=>`<td>${cell}</td>`).join('')}</tr>`).join('');

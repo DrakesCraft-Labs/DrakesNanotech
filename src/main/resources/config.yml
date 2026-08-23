@@ -23,3 +23,6 @@ god-prison:
   # One power cell is consumed per this many protected blocks every cycle.
   region-blocks-per-cell: 4096
   cell-cycle-seconds: 15
+automation-ai:
+  infinity-minimum-seconds: 259200
+  maximum-seconds: 604800

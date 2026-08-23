@@ -18,8 +18,12 @@ player kills, invisible attacks, or particle lag.
 
 ## Synthezoid Dominion & Graviton Engineering 0.3.0
 
-- **157 registered Slimefun entries:** components, weapons, hero equipment, suits and artifacts plus
-  14 fully documented machine heads.
+- **158 registered Slimefun entries:** components, weapons, hero equipment, suits and artifacts plus
+  15 fully documented and textured machine heads.
+- **Universal Automation Intelligence:** reads any concrete registered Slimefun recipe, prices its
+  materials, reserves inputs, consumes energy per powered tick and persists progress. Infinity and
+  Singularity targets require at least three real powered days by default. Its output-first commit
+  protocol favors a recoverable duplicate over ever deleting irreplaceable materials during a crash.
 - **Eight documented multiblocks:** including the 41x41x29 Dying-Star Dyson Foundry and the
   ProtectionStone-sized God-Prison Graviton Cage.
 - **Ultron Infinity manifestation:** synthezoid tissue, Vision-derived density architecture,
@@ -142,7 +146,7 @@ workspace it is installed from `Slimefun4-Drake` with `mvn -DskipTests install`.
 - **0.5 Infinity:** six independent boss chains, capsules, gauntlet GUI, safe PvE Snap and audit log.
 - **0.6 Beyond Time:** Pym/Kang engineering, temporal anchors and the Universal Forge.
 
-The catalog now covers 157 distinct registered entries; releases remain chapter-based so
+The catalog now covers 158 distinct registered entries; releases remain chapter-based so
 every recipe, PDC state, protection boundary and effect budget can be tested before production.
 
 ## License and trademarks

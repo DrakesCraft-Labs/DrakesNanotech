@@ -13,7 +13,7 @@ class NanotechCatalogTest {
         var ids = new HashSet<String>();
         NanotechCatalog.items().forEach(item -> assertTrue(ids.add(item.id()), "duplicate id " + item.id()));
         NanotechCatalog.machines().forEach(machine -> assertTrue(ids.add(machine.id()), "duplicate id " + machine.id()));
-        assertTrue(ids.size() >= 157);
+        assertTrue(ids.size() >= 158);
         assertTrue(ids.contains("ENCHANT_ARC_AEGIS"));
         assertTrue(ids.contains("ENCHANT_NANITE_REGENESIS"));
         assertTrue(ids.contains("ENCHANT_ZERO_POINT_ANCHOR"));
@@ -47,10 +47,13 @@ class NanotechCatalogTest {
             assertTrue(machine.containment() != null && !machine.containment().isBlank());
             assertTrue(machine.shutdown() != null && !machine.shutdown().isBlank());
             assertTrue(machine.textureValue() != null && machine.textureValue().length() > 100);
-            String[] process = NanotechContent.machineProcess(machine.id());
-            assertTrue(itemIds.contains(process[0]), "missing machine input " + process[0]);
-            assertTrue(itemIds.contains(process[1]), "missing machine output " + process[1]);
+            if (!machine.id().equals("UNIVERSAL_AUTOMATION_AI")) {
+                String[] process = NanotechContent.machineProcess(machine.id());
+                assertTrue(itemIds.contains(process[0]), "missing machine input " + process[0]);
+                assertTrue(itemIds.contains(process[1]), "missing machine output " + process[1]);
+            }
         }
+        assertTrue(NanotechCatalog.machines().stream().anyMatch(machine -> machine.id().equals("UNIVERSAL_AUTOMATION_AI")));
     }
 
     @Test
