@@ -1,0 +1,16 @@
+schema: 1
+policy:
+  item_identity: slimefun_pdc
+  block_form: player_head
+  breaking_returns_registered_item: true
+  copied_plugin_assets: false
+families:
+  arc: {palette: "cyan-white / gunmetal", motif: "circular reactor and induction coils"}
+  nanotech: {palette: "black / red / gold", motif: "hexagonal programmable-matter lattice"}
+  gamma: {palette: "green / shielding gray", motif: "irradiated crystal behind containment"}
+  cosmic: {palette: "obsidian / domain color", motif: "concentric containment rings"}
+  latverian: {palette: "green / brass", motif: "runic circuitry and stylized mask geometry"}
+machine_texture_manifest:
+  current_revision: 1
+  status: prototype
+  note: "0.1 uses one validated textured-head prototype across machines. Unique original skins replace it before 0.2 release. IDs and recipes will remain stable."

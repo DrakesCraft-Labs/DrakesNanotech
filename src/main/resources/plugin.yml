@@ -1,0 +1,18 @@
+name: DrakesNanotech
+version: 0.1.0
+main: cl.drakescraft.nanotech.DrakesNanotechPlugin
+api-version: '1.21.11'
+authors: [JackStar]
+description: Ultra-endgame programmable matter, ARC engineering and safe cosmic technology for Slimefun.
+depend: [Slimefun]
+softdepend: [WorldGuard, ProtectionStones, DrakesBosses, DrakesArcana]
+commands:
+  nanotech:
+    aliases: [dnano, arcforge]
+    description: Opens DrakesNanotech status and field manual.
+    usage: /nanotech [status|catalog]
+permissions:
+  drakesnanotech.use:
+    default: true
+  drakesnanotech.admin:
+    default: op

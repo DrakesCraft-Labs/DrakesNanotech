@@ -1,0 +1,16 @@
+{
+  "slug": "drakesnanotech",
+  "title": "DrakesNanotech",
+  "description": "Ultra-endgame programmable matter, ARC engineering, gamma science and safe cosmic containment for Slimefun.",
+  "project_type": "mod",
+  "client_side": "unsupported",
+  "server_side": "required",
+  "categories": ["technology", "adventure"],
+  "additional_categories": [],
+  "license_id": "LicenseRef-DrakesCraft-Labs",
+  "is_draft": true,
+  "requested_status": "draft",
+  "body_file": "DESCRIPTION.md",
+  "icon_file": "../assets/icon.png",
+  "gallery": [{"file": "../assets/banner.png", "featured": true, "title": "DrakesNanotech technology branches"}]
+}

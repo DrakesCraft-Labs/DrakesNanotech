@@ -1,0 +1,13 @@
+effects:
+  max-particles-per-attack: 180
+  repulsor-range: 28
+  repulsor-damage: 10.0
+cosmic-exposure:
+  enabled: true
+  warning-seconds: 4
+  critical-seconds: 12
+  disintegration-seconds: 20
+safety:
+  damage-players: false
+  break-blocks: false
+  max-entities-per-effect: 48
