@@ -27,7 +27,8 @@ public final class DrakesNanotechPlugin extends JavaPlugin implements SlimefunAd
             getServer().getPluginManager().registerEvents(new NanotechWeaponListener(this, content, protectionGate), this);
             getServer().getPluginManager().registerEvents(new HeroSuitListener(this, content), this);
             getServer().getPluginManager().registerEvents(new CosmicExposureListener(this, content), this);
-            getLogger().info("DrakesNanotech loaded " + content.itemCount() + " items across " + content.machineCount() + " documented machines.");
+            getLogger().info("DrakesNanotech loaded " + content.itemCount() + " items, " + content.machineCount()
+                    + " machines and " + content.multiblockCount() + " documented multiblocks.");
         } catch (RuntimeException | LinkageError error) {
             getLogger().log(Level.SEVERE, "DrakesNanotech failed its safe startup; disabling addon.", error);
             getServer().getPluginManager().disablePlugin(this);
@@ -41,7 +42,8 @@ public final class DrakesNanotechPlugin extends JavaPlugin implements SlimefunAd
     @Override
     public boolean onCommand(@Nonnull CommandSender sender, @Nonnull Command command, @Nonnull String label, @Nonnull String[] args) {
         sender.sendMessage("§6DrakesNanotech §8· §f" + content.itemCount() + " registered items, §b"
-                + content.machineCount() + " machines§f, ARC weapons, nanotech armor and cosmic containment.");
+                + content.machineCount() + " machines§f and §d" + content.multiblockCount()
+                + " multiblocks§f, ARC weapons, nanotech armor and cosmic containment.");
         sender.sendMessage("§7Open the Slimefun Guide and search §eDrakes Nanotech§7.");
         return true;
     }

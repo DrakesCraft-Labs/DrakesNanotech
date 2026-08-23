@@ -115,6 +115,7 @@ public final class NanotechContent {
 
     public int itemCount() { return NanotechCatalog.items().size() + NanotechCatalog.machines().size(); }
     public int machineCount() { return NanotechCatalog.machines().size(); }
+    public int multiblockCount() { return NanotechCatalog.multiblocks().size(); }
     private static String title(TechnologyBranch branch) { return branch.name().toLowerCase(Locale.ROOT).replace('_', ' '); }
     private static String formatEnergy(int energy) { return energy >= 1_000_000_000 ? energy / 1_000_000_000 + " GJ" : energy / 1_000_000 + " MJ"; }
 }

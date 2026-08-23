@@ -14,10 +14,21 @@ isotopes, and only then begin the six cosmic artifact programs.
 The addon is built for servers that want spectacular abilities without accepting grief, random
 player kills, invisible attacks, or particle lag.
 
-## Heroes & Cataclysms 0.2.0
+## Heroes, Stark Systems & Infinity Engineering 0.2.0
 
-- **93 registered Slimefun entries:** components, weapons, hero equipment, suits and artifacts plus
+- **134 registered Slimefun entries:** components, weapons, hero equipment, suits and artifacts plus
   12 fully documented machine heads.
+- **Six documented multiblocks:** cleanroom, New Element accelerator, gamma vault, Hulkbuster
+  gantry, orbital fabrication silo and the 17x17 Infinity Forge.
+- **Precision Stark engineering:** micro ARC capacitors, repulsor optics, flight gyros, vectoring
+  nozzles, nanite injectors, thermal layers, power buses and servo clusters feed specialized armor.
+- **Expanded Iron armor program:** Mark VI, VII, XVII, XXV, XXXVIII, XLVI and LXXXV systems,
+  War Machine targeting, Unibeam and pulse-barrier hardware.
+- **Kinetic shield program:** shield blank, kinetic matrix, magnetic recall, tactical harness,
+  enhancement catalyst and two creature-only returning shields.
+- **Infinity Snap:** six orbiting domain colors, escalating resonance, celestial flash, expanding
+  rainbow shockwave and layered ash disintegration. It selects a configurable fraction of actual
+  Bukkit mobs only—players are structurally impossible targets.
 - **Seven branches:** Salvaged Technology, ARC, Nanotech, Gamma, Wakandan Engineering,
   Latverian Techno-Arcana and Cosmic Containment.
 - **ARC combat:** the Repulsor Emitter renders a visible cyan ray, impact flash and knockback;
@@ -68,10 +79,11 @@ public contract is already stable. A machine description always answers:
 5. Why did it stop, and what exactly happens during failure?
 
 See the complete [Machine Field Manual](docs/MACHINES.md).
+See exact structures and shutdown rules in the [Multiblock Field Manual](docs/MULTIBLOCKS.md).
 
 ## Safety is part of the fantasy
 
-- Players are never valid Repulsor or future Snap targets.
+- Players are never valid Repulsor, shield, Unibeam, cataclysm or Snap targets.
 - No ability calls Bukkit block explosions.
 - Every large-area weapon scans WorldGuard and ProtectionStones before rendering or damaging.
 - A configurable 24-block buffer rejects use near any protected region, including the user's own.
@@ -111,7 +123,7 @@ workspace it is installed from `Slimefun4-Drake` with `mvn -DskipTests install`.
 - **0.5 Infinity:** six independent boss chains, capsules, gauntlet GUI, safe PvE Snap and audit log.
 - **0.6 Beyond Time:** Pym/Kang engineering, temporal anchors and the Universal Forge.
 
-The design backlog already covers more than 120 distinct items; releases remain chapter-based so
+The catalog now covers 134 distinct registered entries; releases remain chapter-based so
 every recipe, PDC state, protection boundary and effect budget can be tested before production.
 
 ## License and trademarks

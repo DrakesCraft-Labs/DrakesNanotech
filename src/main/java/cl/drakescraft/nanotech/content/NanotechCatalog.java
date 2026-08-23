@@ -90,7 +90,48 @@ public final class NanotechCatalog {
             d("SINGULARITY_WARHEAD", Material.END_CRYSTAL, "&8Singularity Warhead", TechnologyBranch.COSMIC, 6, "Controlled gravitational implosion; visual only for blocks."),
             d("NANITE_DISASSEMBLER", Material.NETHERITE_SWORD, "&cNanite Disassembler", TechnologyBranch.NANOTECH, 6, "Dissolves eligible creatures into bounded ash effects."),
             d("DIMENSIONAL_BREACH_CHARGE", Material.CRYING_OBSIDIAN, "&dDimensional Breach Charge", TechnologyBranch.COSMIC, 6, "Creates a temporary visual scar in unprotected wilderness."),
-            d("UNIVERSAL_FORGE_KEY", Material.TRIAL_KEY, "&dUniversal Forge Key", TechnologyBranch.COSMIC, 6, "Proof of mastery across every branch.")
+            d("UNIVERSAL_FORGE_KEY", Material.TRIAL_KEY, "&dUniversal Forge Key", TechnologyBranch.COSMIC, 6, "Proof of mastery across every branch."),
+            d("MICRO_ARC_CAPACITOR", Material.LAPIS_LAZULI, "&bMicro ARC Capacitor", TechnologyBranch.ARC, 2, "Pulse-rated energy cell for one suit subsystem."),
+            d("REPULSOR_MICRO_LENS", Material.AMETHYST_SHARD, "&fRepulsor Micro-Lens", TechnologyBranch.ARC, 2, "Diamond-cut optic aligned to one hundredth of a degree."),
+            d("THRUST_VECTORING_NOZZLE", Material.COPPER_BULB, "&6Thrust-Vectoring Nozzle", TechnologyBranch.ARC, 3, "Micro-gimballed boot-flight exhaust."),
+            d("FLIGHT_STABILIZER_GYRO", Material.COMPASS, "&bFlight Stabilizer Gyro", TechnologyBranch.ARC, 3, "Triple-redundant inertial correction package."),
+            d("NANO_SERVO_CLUSTER", Material.IRON_NUGGET, "&cNano-Servo Cluster", TechnologyBranch.NANOTECH, 3, "Sixteen synchronized armor articulation motors."),
+            d("HELMET_HUD_ARRAY", Material.SPYGLASS, "&eHelmet HUD Array", TechnologyBranch.ARC, 3, "Threat, altitude and energy telemetry optics."),
+            d("ATMOSPHERIC_SEAL", Material.RABBIT_HIDE, "&7Atmospheric Seal", TechnologyBranch.NANOTECH, 3, "Self-testing pressure membrane for hostile environments."),
+            d("CRYO_PROTECTION_LAYER", Material.PACKED_ICE, "&bCryogenic Protection Layer", TechnologyBranch.NANOTECH, 4, "Aerogel nanoweave against upper-atmosphere icing."),
+            d("KINETIC_DAMPER", Material.PISTON, "&9Kinetic Damper", TechnologyBranch.WAKANDAN, 4, "Routes impact impulse away from the pilot."),
+            d("HEAT_SINK_FIN", Material.COPPER_GRATE, "&6Micro Heat-Sink Fin", TechnologyBranch.ARC, 2, "One segment of a regenerative thermal lattice."),
+            d("ARC_POWER_BUS", Material.POWERED_RAIL, "&bARC Power Bus", TechnologyBranch.ARC, 3, "Superconducting suit-wide energy backbone."),
+            d("SMART_ALLOY_PLATE", Material.NETHERITE_SCRAP, "&8Smart-Alloy Plate", TechnologyBranch.NANOTECH, 4, "Shape-memory armor tile with embedded diagnostics."),
+            d("NANITE_INJECTOR", Material.BREEZE_ROD, "&cNanite Injector", TechnologyBranch.NANOTECH, 4, "Meters authenticated nanomass into damaged suit zones."),
+            d("MICRO_MISSILE", Material.FIREWORK_STAR, "&cGuided Micro-Missile", TechnologyBranch.ARC, 4, "Creature-lock payload with inert block-impact fuse."),
+            d("PULSE_BARRIER_EMITTER", Material.PRISMARINE_CRYSTALS, "&bPulse Barrier Emitter", TechnologyBranch.NANOTECH, 4, "Short-lived hexagonal energy defense projector."),
+            d("MARK_VI_ARC_CORE", Material.SEA_LANTERN, "&bMark VI Triangular ARC Core", TechnologyBranch.ARC, 4, "High-output triangular reactor architecture."),
+            d("MARK_VII_DEPLOYMENT_POD", Material.RED_SHULKER_BOX, "&cMark VII Deployment Pod", TechnologyBranch.ARC, 4, "Autonomous rapid-assembly armor capsule."),
+            d("MARK_XVII_ARTILLERY_CORE", Material.TNT, "&4Mark XVII Artillery Core", TechnologyBranch.ARC, 5, "Heartbreaker-class sustained repulsor distribution."),
+            d("MARK_XXV_CONSTRUCTION_FRAME", Material.ANVIL, "&6Mark XXV Construction Frame", TechnologyBranch.ARC, 5, "Striker-class industrial exoskeleton skeleton."),
+            d("MARK_XXXVIII_HEAVY_FRAME", Material.HEAVY_CORE, "&9Mark XXXVIII Heavy Frame", TechnologyBranch.ARC, 5, "Igor-class lifting and structural rescue chassis."),
+            d("MARK_XLVI_COMBAT_NANOCORE", Material.NETHERITE_CHESTPLATE, "&cMark XLVI Combat Nanocore", TechnologyBranch.NANOTECH, 5, "Segmented high-speed combat armor reservoir."),
+            d("MARK_LXXXV_NANOCORE", Material.NETHER_STAR, "&6Mark LXXXV Nanocore", TechnologyBranch.NANOTECH, 6, "Mature programmable armor with tool-forming reserves."),
+            d("WAR_MACHINE_TARGETING_CORE", Material.TARGET, "&8War Machine Targeting Core", TechnologyBranch.ARC, 5, "Independent creature-only heavy-weapon fire control."),
+            d("VIBRANIUM_SHIELD_BLANK", Material.DISC_FRAGMENT_5, "&9Vibranium Shield Blank", TechnologyBranch.WAKANDAN, 4, "Unpainted circular kinetic alloy laminate."),
+            d("KINETIC_SHIELD_MATRIX", Material.SCULK_CATALYST, "&5Kinetic Shield Matrix", TechnologyBranch.WAKANDAN, 5, "Captures impact energy without reflecting it at players."),
+            d("MAGNETIC_SHIELD_RECALL", Material.COMPASS, "&bMagnetic Shield Recall", TechnologyBranch.ARC, 4, "Owner-locked return guidance and wrist receiver."),
+            d("TACTICAL_SHIELD_HARNESS", Material.LEATHER_CHESTPLATE, "&8Tactical Shield Harness", TechnologyBranch.ARC, 3, "Back-mounted retention and recall charging rig."),
+            d("CAPTAIN_SHIELD", Material.SHIELD, "&cKinetic Captain Shield", TechnologyBranch.WAKANDAN, 5, "Right-click: protected creature-only ricochet and return."),
+            d("STEALTH_CAPTAIN_SHIELD", Material.SHIELD, "&8Stealth Kinetic Shield", TechnologyBranch.WAKANDAN, 5, "Low-visibility creature-only ricochet platform."),
+            d("STABILIZED_SUPER_SOLDIER_SERUM", Material.POTION, "&bStabilized Enhancement Serum", TechnologyBranch.GAMMA, 5, "Sterile endgame catalyst; no uncontrolled mutation."),
+            d("CLEANROOM_CONTROLLER", Material.LODESTONE, "&fCleanroom Controller", TechnologyBranch.NANOTECH, 3, "Validates sealed multiblock walls before synthesis."),
+            d("CLEANROOM_WALL", Material.WHITE_STAINED_GLASS, "&fCleanroom Wall", TechnologyBranch.NANOTECH, 3, "Particle-controlled structural panel."),
+            d("VACUUM_SEAL_RING", Material.IRON_TRAPDOOR, "&7Vacuum Seal Ring", TechnologyBranch.ARC, 4, "Pressure-rated multiblock chamber collar."),
+            d("ARC_CONTAINMENT_PYLON", Material.LIGHTNING_ROD, "&bARC Containment Pylon", TechnologyBranch.ARC, 4, "Grounds one quadrant of an accelerator field."),
+            d("GAMMA_SHIELDING_BLOCK", Material.LIME_GLAZED_TERRACOTTA, "&aGamma Shielding Block", TechnologyBranch.GAMMA, 4, "Layered boron-vibranium radiation barrier."),
+            d("COSMIC_FOCUSING_RING", Material.END_PORTAL_FRAME, "&dCosmic Focusing Ring", TechnologyBranch.COSMIC, 6, "One calibrated segment of a six-domain aperture."),
+            d("INFINITY_FORGE_CONTROLLER", Material.RESPAWN_ANCHOR, "&dInfinity Forge Controller", TechnologyBranch.COSMIC, 6, "Audits the complete universal-forge multiblock."),
+            d("SNAP_CALIBRATION_MATRIX", Material.CALIBRATED_SCULK_SENSOR, "&6Snap Calibration Matrix", TechnologyBranch.COSMIC, 6, "Hard-locks universal discharge to eligible mobs."),
+            d("INFINITY_GAUNTLET", Material.GOLDEN_CHESTPLATE, "&6Infinity Gauntlet", TechnologyBranch.COSMIC, 6, "Right-click: spectacular bounded Snap; mobs only, never players."),
+            d("NANO_INFINITY_GAUNTLET", Material.NETHERITE_CHESTPLATE, "&cNano Infinity Gauntlet", TechnologyBranch.COSMIC, 6, "Programmable universal discharge with the same immutable safety lock."),
+            d("STARK_UNIBEAM_ASSEMBLY", Material.BEACON, "&fStark Unibeam Assembly", TechnologyBranch.ARC, 5, "Right-click: charged wide-spectrum creature-only beam.")
         );
     }
 
@@ -120,5 +161,23 @@ public final class NanotechCatalog {
                                        int buffer, int seconds, String input, String output, String hazard,
                                        String containment, String shutdown, String texture) {
         return new MachineDefinition(id, name, branch, tier, ept, buffer, seconds, input, output, hazard, containment, shutdown, texture);
+    }
+
+    /** Documented structures whose controllers validate shape before processing. */
+    public static List<MultiblockDefinition> multiblocks() {
+        return List.of(
+            mb("STERILE_NANITE_CLEANROOM", "Sterile Nanite Cleanroom", TechnologyBranch.NANOTECH, 3, "7x7x5", "Cleanroom Controller", "48 Cleanroom Walls, 4 filters, sealed door", "8,192 J/t; 250 MJ", "Programs contamination-free nanocells", "Stops and seals the batch if any wall opens"),
+            mb("NEW_ELEMENT_ACCELERATOR_ARRAY", "New Element Accelerator Array", TechnologyBranch.ARC, 5, "11x5x5", "New Element Accelerator", "8 ARC Pylons, 24 Vacuum Rings, 2 beam dumps", "65,536 J/t; 4 GJ", "Forges one New Element lattice", "Four-point SCRAM; no explosion and no block mutation"),
+            mb("GAMMA_CONTAINMENT_VAULT", "Gamma Containment Vault", TechnologyBranch.GAMMA, 5, "9x9x7", "Gamma Cyclotron", "96 Gamma Shielding Blocks, airlock, absorber crown", "32,768 J/t; 2 GJ", "Stabilizes boss-derived gamma isotopes", "Fails closed and converts the batch to inert waste"),
+            mb("HULKBUSTER_ASSEMBLY_GANTRY", "Hulkbuster Assembly Gantry", TechnologyBranch.ARC, 5, "9x9x12", "Armor Assembly Bench", "4 cranes, 8 anchors, 16 servo columns", "16,384 J/t; 1 GJ", "Assembles heavy modular armor frames", "Owner lock, empty deployment volume and emergency brakes"),
+            mb("ORBITAL_FABRICATION_SILO", "Orbital Fabrication Silo", TechnologyBranch.NANOTECH, 6, "13x13x15", "Nanoforge", "4 cleanroom decks, 12 power buses, launch aperture", "131,072 J/t; 12 GJ", "Builds Mark LXXXV and War Machine systems", "Aborts on entities in the assembly volume"),
+            mb("UNIVERSAL_INFINITY_FORGE", "Universal Infinity Forge", TechnologyBranch.COSMIC, 6, "17x17x9", "Infinity Forge Controller", "6 Focusing Rings, 12 pylons, Snap Matrix, containment dais", "524,288 J/t; 60 GJ", "Sockets six contained domains into one gauntlet", "Protection scan, six-domain SCRAM and zero block damage")
+        );
+    }
+
+    private static MultiblockDefinition mb(String id, String name, TechnologyBranch branch, int tier,
+                                            String footprint, String controller, String structure, String power,
+                                            String purpose, String safety) {
+        return new MultiblockDefinition(id, name, branch, tier, footprint, controller, structure, power, purpose, safety);
     }
 }

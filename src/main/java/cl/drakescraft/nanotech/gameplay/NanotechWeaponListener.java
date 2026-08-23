@@ -3,12 +3,15 @@ package cl.drakescraft.nanotech.gameplay;
 import cl.drakescraft.nanotech.DrakesNanotechPlugin;
 import cl.drakescraft.nanotech.content.NanotechContent;
 import cl.drakescraft.nanotech.effects.CataclysmEffectService;
+import cl.drakescraft.nanotech.effects.CombatTargets;
+import cl.drakescraft.nanotech.effects.SnapEffectService;
 import cl.drakescraft.nanotech.protection.ProtectionGate;
 import org.bukkit.Color;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -27,13 +30,16 @@ public final class NanotechWeaponListener implements Listener {
     private final NanotechContent content;
     private final ProtectionGate protectionGate;
     private final CataclysmEffectService cataclysms;
+    private final SnapEffectService snaps;
     private final Map<UUID, Long> cooldowns = new HashMap<>();
+    private final Map<UUID, Long> snapCooldowns = new HashMap<>();
 
     public NanotechWeaponListener(DrakesNanotechPlugin plugin, NanotechContent content, ProtectionGate protectionGate) {
         this.plugin = plugin;
         this.content = content;
         this.protectionGate = protectionGate;
         this.cataclysms = new CataclysmEffectService(plugin);
+        this.snaps = new SnapEffectService(plugin);
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
@@ -42,6 +48,11 @@ public final class NanotechWeaponListener implements Listener {
         Player player = event.getPlayer();
         String id = content.idOf(event.getItem());
         if (id.isBlank()) return;
+        if (id.equals("INFINITY_GAUNTLET") || id.equals("NANO_INFINITY_GAUNTLET")) {
+            event.setCancelled(true);
+            snap(player);
+            return;
+        }
         long now = System.currentTimeMillis();
         if (cooldowns.getOrDefault(player.getUniqueId(), 0L) > now) {
             player.sendActionBar("§cRepulsor cooling down");
@@ -55,6 +66,8 @@ public final class NanotechWeaponListener implements Listener {
                 case "WEB_SHOOTER" -> fireWeb(player);
                 case "HAWKEYE_COMPOUND_BOW", "SONIC_ARROW" -> sonicArrow(player);
                 case "WIDOW_BITE_GAUNTLET" -> widowBite(player);
+                case "CAPTAIN_SHIELD", "STEALTH_CAPTAIN_SHIELD" -> throwShield(player, id.equals("STEALTH_CAPTAIN_SHIELD"));
+                case "UNIBEAM_LENS", "STARK_UNIBEAM_ASSEMBLY" -> fireUnibeam(player);
                 case "ORBITAL_SKY_LANCE", "ULTRON_INFINITY_BEAM", "CELESTIAL_NULLIFIER" -> fireSkyWeapon(player, id);
                 case "REALITY_FRACTURE_DEVICE", "DIMENSIONAL_BREACH_CHARGE", "SINGULARITY_WARHEAD" -> fractureReality(player);
                 default -> cooldowns.remove(player.getUniqueId());
@@ -63,6 +76,58 @@ public final class NanotechWeaponListener implements Listener {
             plugin.getLogger().log(java.util.logging.Level.WARNING, "Ability execution failed safely for " + id, error);
             player.sendMessage("§6DrakesNanotech §8· §cThe ability aborted safely.");
         }
+    }
+
+    /** Executes a long-cooldown Snap only after a buffered protection scan succeeds. */
+    private void snap(Player player) {
+        double radius = Math.max(8D, plugin.getConfig().getDouble("snap.radius", 42D));
+        if (!protectionGate.allowLargeAbility(player, player.getLocation(), radius)) return;
+        long now = System.currentTimeMillis();
+        long until = snapCooldowns.getOrDefault(player.getUniqueId(), 0L);
+        if (until > now) {
+            player.sendActionBar("§cUniversal discharge is still cooling down");
+            return;
+        }
+        snapCooldowns.put(player.getUniqueId(), now + Math.max(60, plugin.getConfig().getInt("snap.cooldown-seconds", 600)) * 1000L);
+        snaps.snap(player);
+    }
+
+    /** Draws an outbound and returning kinetic path through at most six mobs. */
+    private void throwShield(Player player, boolean stealth) {
+        org.bukkit.Location cursor = player.getEyeLocation();
+        Vector direction = cursor.getDirection().normalize();
+        Particle.DustOptions trail = new Particle.DustOptions(stealth ? Color.fromRGB(55, 75, 95) : Color.fromRGB(225, 35, 45), 1.45F);
+        java.util.List<Mob> hits = new java.util.ArrayList<>();
+        for (int step = 0; step < 34; step++) {
+            cursor = cursor.clone().add(direction.clone().multiply(0.7D));
+            cursor.getWorld().spawnParticle(Particle.DUST, cursor, 2, 0.04, 0.04, 0.04, trail);
+            for (Entity entity : cursor.getWorld().getNearbyEntities(cursor, 1D, 1D, 1D, CombatTargets::isHostileEffectTarget)) {
+                Mob mob = (Mob) entity;
+                if (hits.contains(mob) || hits.size() >= 6) continue;
+                hits.add(mob);
+                mob.damage(11D, player);
+                mob.setVelocity(direction.clone().multiply(0.55D).setY(0.22D));
+                cursor.getWorld().playSound(cursor, Sound.ITEM_SHIELD_BLOCK, 0.8F, 1.45F);
+                direction.rotateAroundY(Math.PI / 5D);
+            }
+        }
+        drawArc(cursor, player.getEyeLocation());
+        player.getWorld().playSound(player, Sound.ITEM_TRIDENT_RETURN, 1F, 1.35F);
+    }
+
+    /** Charges and emits a wide visible ARC beam whose ray predicate accepts mobs only. */
+    private void fireUnibeam(Player player) {
+        Vector direction = player.getEyeLocation().getDirection().normalize();
+        org.bukkit.Location start = player.getEyeLocation().add(direction.clone().multiply(0.8D));
+        Particle.DustOptions white = new Particle.DustOptions(Color.fromRGB(220, 255, 255), 2.2F);
+        for (double distance = 0; distance <= 42D; distance += 0.28D) {
+            org.bukkit.Location point = start.clone().add(direction.clone().multiply(distance));
+            player.getWorld().spawnParticle(Particle.DUST, point, 3, 0.09, 0.09, 0.09, white);
+            if (((int) (distance * 10)) % 12 == 0) player.getWorld().spawnParticle(Particle.END_ROD, point, 2, 0.12, 0.12, 0.12, 0.01);
+        }
+        player.getWorld().playSound(player, Sound.ENTITY_WARDEN_SONIC_BOOM, 1.2F, 1.25F);
+        RayTraceResult hit = player.getWorld().rayTraceEntities(start, direction, 42D, 1.2D, CombatTargets::isHostileEffectTarget);
+        if (hit != null && hit.getHitEntity() instanceof Mob mob) mob.damage(28D, player);
     }
 
     private void fireWeb(Player player) {
@@ -83,7 +148,7 @@ public final class NanotechWeaponListener implements Listener {
         LivingEntity previous = player;
         int affected = 0;
         for (LivingEntity target : player.getWorld().getNearbyLivingEntities(player.getLocation(), 12D,
-                entity -> !(entity instanceof Player))) {
+                CombatTargets::isHostileEffectTarget)) {
             if (affected++ >= 6) break;
             drawArc(previous.getLocation().add(0, 1, 0), target.getLocation().add(0, 1, 0));
             target.damage(7D, player);
@@ -104,7 +169,7 @@ public final class NanotechWeaponListener implements Listener {
             }
         }
         target.getWorld().playSound(target, Sound.ENTITY_WARDEN_SONIC_BOOM, 0.9F, 1.7F);
-        target.getWorld().getNearbyLivingEntities(target, 7D, entity -> !(entity instanceof Player)).stream()
+        target.getWorld().getNearbyLivingEntities(target, 7D, CombatTargets::isHostileEffectTarget).stream()
                 .limit(12)
                 .forEach(entity -> {
                     entity.damage(8D, player);
@@ -165,6 +230,6 @@ public final class NanotechWeaponListener implements Listener {
     }
 
     private static boolean eligibleTarget(Player source, Entity entity) {
-        return entity instanceof LivingEntity && !(entity instanceof Player) && !entity.getUniqueId().equals(source.getUniqueId());
+        return CombatTargets.isHostileEffectTarget(entity) && !entity.getUniqueId().equals(source.getUniqueId());
     }
 }

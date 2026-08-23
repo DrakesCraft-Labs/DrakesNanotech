@@ -5,7 +5,7 @@ import org.bukkit.Color;
 import org.bukkit.Location;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
-import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Mob;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
@@ -59,8 +59,9 @@ public final class CataclysmEffectService {
 
     private void damageCreatures(Player actor, Location center, double radius, double damage) {
         int cap = Math.max(1, plugin.getConfig().getInt("safety.max-entities-per-effect", 48));
-        center.getWorld().getNearbyLivingEntities(center, radius).stream()
-                .filter(entity -> !(entity instanceof Player))
+        center.getWorld().getNearbyEntities(center, radius, radius, radius).stream()
+                .filter(CombatTargets::isHostileEffectTarget)
+                .map(Mob.class::cast)
                 .sorted(Comparator.comparingDouble(entity -> entity.getLocation().distanceSquared(center)))
                 .limit(cap)
                 .forEach(entity -> {
