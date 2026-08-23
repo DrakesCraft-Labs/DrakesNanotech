@@ -36,6 +36,7 @@ class NanotechCatalogTest {
 
     @Test
     void everyMachineHasOperationalDocumentationAndTexture() {
+        var itemIds = NanotechCatalog.items().stream().map(ContentDefinition::id).collect(java.util.stream.Collectors.toSet());
         for (MachineDefinition machine : NanotechCatalog.machines()) {
             assertTrue(machine.energyPerTick() > 0);
             assertTrue(machine.buffer() >= machine.energyPerTick());
@@ -46,6 +47,9 @@ class NanotechCatalogTest {
             assertTrue(machine.containment() != null && !machine.containment().isBlank());
             assertTrue(machine.shutdown() != null && !machine.shutdown().isBlank());
             assertTrue(machine.textureValue() != null && machine.textureValue().length() > 100);
+            String[] process = NanotechContent.machineProcess(machine.id());
+            assertTrue(itemIds.contains(process[0]), "missing machine input " + process[0]);
+            assertTrue(itemIds.contains(process[1]), "missing machine output " + process[1]);
         }
     }
 

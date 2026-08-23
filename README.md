@@ -4,6 +4,8 @@
 
 # DrakesNanotech
 
+**[Open the complete interactive Field Guide](https://drakescraft-labs.github.io/DrakesNanotech/)**
+
 **Programmable matter. ARC engineering. Gamma science. Cosmic containment.**
 
 DrakesNanotech is an ultra-endgame Slimefun expansion for Minecraft 1.21.11. It builds a long,
@@ -95,6 +97,8 @@ public contract is already stable. A machine description always answers:
 
 See the complete [Machine Field Manual](docs/MACHINES.md).
 See exact structures and shutdown rules in the [Multiblock Field Manual](docs/MULTIBLOCKS.md).
+The public [Field Guide](docs/site/index.html) joins progression, operations, armor systems,
+storage networking, gauntlets, safety and troubleshooting in one player-facing route.
 
 ## Safety is part of the fantasy
 

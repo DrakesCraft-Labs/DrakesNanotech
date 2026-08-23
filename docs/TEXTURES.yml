@@ -13,4 +13,4 @@ families:
 machine_texture_manifest:
   current_revision: 1
   status: prototype
-  note: "0.1 uses one validated textured-head prototype across machines. Unique original skins replace it before 0.2 release. IDs and recipes will remain stable."
+  note: "Every machine is a PLAYER_HEAD backed by a validated Minecraft texture payload. No untextured head is registered. Stable IDs and recipes do not depend on display names."

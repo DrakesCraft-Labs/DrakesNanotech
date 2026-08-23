@@ -3,8 +3,8 @@
 An ultra-endgame **Slimefun expansion** for ARC engineering, programmable matter, hero equipment,
 gamma containment and six-domain cosmic technology.
 
-Build infrastructure—not instant god items. The 0.2 catalog contains **134 registered entries**,
-twelve textured-head machines with complete in-game specifications, and six massive multiblock
+Build infrastructure—not instant god items. The 0.3 catalog contains **157 registered entries**,
+fourteen operational textured-head processors with powered menus, and eight massive multiblock
 designs. Tiny components—optical lenses, flight gyros, vectoring nozzles, heat sinks, nanite
 injectors and power buses—feed specialized Mark armor, War Machine systems, kinetic shields and
 the Universal Infinity Forge.
@@ -15,7 +15,9 @@ the Universal Infinity Forge.
 - visible Repulsor, Unibeam, returning kinetic shield and creature-only tactical combat
 - Spider suits, web technology, Hawkeye arrow systems and Black Widow equipment
 - Ultron shells, mystic engineering, reversible reality fractures and cinematic sky weapons
-- six documented multiblocks from a 7x7 cleanroom to a 17x17 Infinity Forge
+- eight documented multiblocks from a 7x7 cleanroom to a 41x41x29 dying-star Dyson foundry
+- Stark technological enchantments and three 54-slot Slimefun Cargo / Networks-compatible vaults
+- owner-bound, volume-metered God-Prison flight inside ProtectionStones
 - escalating bare-artifact exposure with clear warnings
 - fail-closed WorldGuard and ProtectionStones lockout around every large-area weapon
 - zero block explosions, bounded effects and English-only content
@@ -29,6 +31,9 @@ collection. The effect selects a configurable fraction under a hard entity budge
 chunks, never mutates blocks and cannot activate near protected territory—even the user's own.
 
 **Server-side:** clients need no mod. Requires Java 21, Paper 1.21.11 and Drakes Slimefun Core.
+
+Read the complete progression and operating guide at
+https://drakescraft-labs.github.io/DrakesNanotech/
 
 This is an original unofficial science-fantasy project. It contains no official logos, character
 likenesses or copied franchise assets.

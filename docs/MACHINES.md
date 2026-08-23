@@ -1,8 +1,9 @@
 # Machine Field Manual
 
-Every value below is part of the machine's public contract and is repeated on its in-game head.
-The first release registers the machines and their recipes; powered processing GUIs land chapter by
-chapter without renaming IDs or silently changing failure behavior.
+Every value below is part of the machine's public contract and is repeated on its textured in-game
+head. All listed machines are registered energy consumers with a protected menu, cargo input/output,
+buffer enforcement, secured batch control and safe inventory drops. A batch cannot complete without
+its registered prerequisite, sufficient stored energy and output space.
 
 | Machine | Tier | Draw | Buffer | Time | Input → Output | Hazard / containment | Safe shutdown |
 |---|---:|---:|---:|---:|---|---|---|
@@ -18,9 +19,12 @@ chapter without renaming IDs or silently changing failure behavior.
 | Techno-Arcane Forge | 4 | 8,192 J/t | 300 MJ | 100s | ARC part + essence → Latverian part | Runic feedback / Ward IV | Grounds resonance |
 | Cosmic Fragment Spectrometer | 5 | 16,384 J/t | 500 MJ | 180s | Fragment → domain signature | Exposure / V | Ejects sealed capsule |
 | Singularity Growth Chamber | 6 | 32,768 J/t | 2 GJ | 300s | Signature + boss core → replica | Reality collapse / VI | Stasis, zero block damage |
+| Stellar Swarm Fabricator | 6 | 262,144 J/t | 2 GJ | 240s | Nanocell → Dyson segment | Coronal induction / VI | Defocuses collector charge |
+| Graviton Field Regulator | 6 | 131,072 J/t | 2 GJ | 180s | Graviton coil → field core | Inertial shear / VI | Revokes flight, preserves blocks |
 
 ## Required operating menu
 
-Powered implementations expose the same seven controls: `Status`, `Power`, `Thermals`,
-`Containment`, `Recipe`, `Modules`, and `Emergency Shutdown`. No machine may hide a required
-coolant, catalyst, orientation, maintenance threshold or ownership rule outside the game.
+The current operating menu exposes secured input, output and a run control whose lore states input,
+output, power contract and buffer. Slimefun Cargo and Networks accessors can insert only into input
+and withdraw only from output. Future controls may add telemetry, but the documented processing
+path above is operational now and is covered by catalog integrity tests.

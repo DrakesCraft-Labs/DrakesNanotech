@@ -57,7 +57,10 @@ public final class NanotechContent {
                 "&6Containment: &f" + definition.containment(), "&cShutdown: &f" + definition.shutdown(),
                 "", "&aSingle-block machine &8· &7Owner protections apply");
         items.put(definition.id(), stack);
-        new SlimefunItem(group, stack, RecipeType.ENHANCED_CRAFTING_TABLE, machineRecipe(definition)).register(plugin);
+        String[] process = machineProcess(definition.id());
+        ItemStack output = items.get(process[1]).clone();
+        if (process.length > 2) output.setAmount(Integer.parseInt(process[2]));
+        new NanotechPoweredMachine(group, stack, machineRecipe(definition), definition, process[0], output).register(plugin);
     }
 
     private ItemStack[] expensiveRecipe(ContentDefinition definition) {
@@ -101,6 +104,27 @@ public final class NanotechContent {
         return new ItemStack[]{new ItemStack(Material.NETHERITE_INGOT), new ItemStack(Material.HEAVY_CORE), new ItemStack(Material.NETHERITE_INGOT),
                 new ItemStack(Material.COMPARATOR), core, new ItemStack(Material.COMPARATOR),
                 new ItemStack(Material.OBSIDIAN), new ItemStack(Material.DIAMOND_BLOCK), new ItemStack(Material.OBSIDIAN)};
+    }
+
+    /** Connects every machine to one registered input and output; startup tests audit these IDs. */
+    static String[] machineProcess(String machineId) {
+        return switch (machineId) {
+            case "CARBYNE_PULVERIZER" -> new String[]{"SALVAGED_SERVO", "NANOCARBON_MATRIX"};
+            case "MOLECULAR_SYNTHESIZER" -> new String[]{"NANOCARBON_MATRIX", "PROGRAMMABLE_NANOCELL"};
+            case "NANOCELL_PROGRAMMER" -> new String[]{"NANOCARBON_MATRIX", "PROGRAMMABLE_NANOCELL", "2"};
+            case "NANOFORGE" -> new String[]{"PROGRAMMABLE_NANOCELL", "NANO_SERVO_CLUSTER"};
+            case "ARMOR_ASSEMBLY_BENCH" -> new String[]{"NANO_SERVO_CLUSTER", "MARK_L_NANOCORE"};
+            case "PALLADIUM_WINDER" -> new String[]{"SALVAGED_SERVO", "PALLADIUM_COIL"};
+            case "NEW_ELEMENT_ACCELERATOR" -> new String[]{"ARC_REACTOR_CORE", "NEW_ELEMENT_INGOT"};
+            case "GAMMA_CYCLOTRON" -> new String[]{"GAMMA_ISOTOPE", "ROSS_ABSORBER"};
+            case "BANNER_STABILIZATION_CHAMBER" -> new String[]{"GAMMA_ISOTOPE", "BANNER_STABILIZER"};
+            case "TECHNO_ARCANE_FORGE" -> new String[]{"ARC_REACTOR_CORE", "LATVERIAN_CORE"};
+            case "COSMIC_SPECTROMETER" -> new String[]{"COSMIC_FRAGMENT", "COSMIC_CIRCUIT"};
+            case "SINGULARITY_GROWTH_CHAMBER" -> new String[]{"COSMIC_CIRCUIT", "POWER_STONE"};
+            case "STELLAR_SWARM_FABRICATOR" -> new String[]{"PROGRAMMABLE_NANOCELL", "DYSON_SWARM_SEGMENT"};
+            case "GRAVITON_FIELD_REGULATOR" -> new String[]{"GRAVITON_CONTAINMENT_COIL", "GOD_PRISON_FIELD_CORE"};
+            default -> throw new IllegalArgumentException("Missing machine process: " + machineId);
+        };
     }
 
     public boolean is(ItemStack stack, String id) {
