@@ -56,7 +56,7 @@ public final class NanotechContent {
     }
 
     private ItemStack[] expensiveRecipe(ContentDefinition definition) {
-        Material center = definition.tier() >= 5 ? Material.NETHER_STAR : definition.tier() >= 3 ? Material.NETHERITE_INGOT : Material.DIAMOND;
+        ItemStack center = progressionCore(definition);
         Material edge = switch (definition.branch()) {
             case ARC -> Material.COPPER_INGOT;
             case NANOTECH -> Material.ECHO_SHARD;
@@ -67,13 +67,34 @@ public final class NanotechContent {
             default -> Material.IRON_INGOT;
         };
         return new ItemStack[]{new ItemStack(edge), new ItemStack(Material.REDSTONE_BLOCK), new ItemStack(edge),
-                new ItemStack(Material.QUARTZ), new ItemStack(center), new ItemStack(Material.QUARTZ),
+                new ItemStack(Material.QUARTZ), center, new ItemStack(Material.QUARTZ),
                 new ItemStack(edge), new ItemStack(Material.DIAMOND_BLOCK), new ItemStack(edge)};
     }
 
+    /** Enforces branch prerequisites so tier labels represent progression, not decorative rarity. */
+    private ItemStack progressionCore(ContentDefinition definition) {
+        String prerequisite = switch (definition.branch()) {
+            case ARC -> definition.id().equals("PALLADIUM_COIL") ? null
+                    : items.containsKey("ARC_REACTOR_CORE") ? "ARC_REACTOR_CORE" : "PALLADIUM_COIL";
+            case NANOTECH -> items.containsKey("NANOCARBON_MATRIX") ? "NANOCARBON_MATRIX" : "ARC_REACTOR_CORE";
+            case GAMMA -> items.containsKey("GAMMA_ISOTOPE") ? "GAMMA_ISOTOPE" : "PORTABLE_ARC_REACTOR";
+            case WAKANDAN -> "PORTABLE_ARC_REACTOR";
+            case LATVERIAN -> "ARC_REACTOR_CORE";
+            case COSMIC -> items.containsKey("COSMIC_FRAGMENT") ? "COSMIC_FRAGMENT" : "LATVERIAN_CORE";
+            case SALVAGED -> null;
+        };
+        SlimefunItemStack registered = prerequisite == null ? null : items.get(prerequisite);
+        if (registered != null) return registered.clone();
+        return new ItemStack(definition.tier() >= 5 ? Material.NETHER_STAR
+                : definition.tier() >= 3 ? Material.NETHERITE_INGOT : Material.DIAMOND);
+    }
+
     private ItemStack[] machineRecipe(MachineDefinition definition) {
+        ItemStack core = definition.tier() >= 5 && items.containsKey("COSMIC_CIRCUIT")
+                ? items.get("COSMIC_CIRCUIT").clone()
+                : items.get("ARC_REACTOR_CORE").clone();
         return new ItemStack[]{new ItemStack(Material.NETHERITE_INGOT), new ItemStack(Material.HEAVY_CORE), new ItemStack(Material.NETHERITE_INGOT),
-                new ItemStack(Material.COMPARATOR), new ItemStack(definition.tier() >= 5 ? Material.NETHER_STAR : Material.BEACON), new ItemStack(Material.COMPARATOR),
+                new ItemStack(Material.COMPARATOR), core, new ItemStack(Material.COMPARATOR),
                 new ItemStack(Material.OBSIDIAN), new ItemStack(Material.DIAMOND_BLOCK), new ItemStack(Material.OBSIDIAN)};
     }
 
