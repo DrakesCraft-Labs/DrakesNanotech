@@ -131,7 +131,22 @@ public final class NanotechCatalog {
             d("SNAP_CALIBRATION_MATRIX", Material.CALIBRATED_SCULK_SENSOR, "&6Snap Calibration Matrix", TechnologyBranch.COSMIC, 6, "Hard-locks universal discharge to eligible mobs."),
             d("INFINITY_GAUNTLET", Material.GOLDEN_CHESTPLATE, "&6Infinity Gauntlet", TechnologyBranch.COSMIC, 6, "Right-click: spectacular bounded Snap; mobs only, never players."),
             d("NANO_INFINITY_GAUNTLET", Material.NETHERITE_CHESTPLATE, "&cNano Infinity Gauntlet", TechnologyBranch.COSMIC, 6, "Programmable universal discharge with the same immutable safety lock."),
-            d("STARK_UNIBEAM_ASSEMBLY", Material.BEACON, "&fStark Unibeam Assembly", TechnologyBranch.ARC, 5, "Right-click: charged wide-spectrum creature-only beam.")
+            d("STARK_UNIBEAM_ASSEMBLY", Material.BEACON, "&fStark Unibeam Assembly", TechnologyBranch.ARC, 5, "Right-click: charged wide-spectrum creature-only beam."),
+            d("SYNTHETIC_TISSUE_LATTICE", Material.PHANTOM_MEMBRANE, "&fSynthetic Tissue Lattice", TechnologyBranch.NANOTECH, 5, "Vibranium-bonded living substrate for a synthezoid body."),
+            d("ULTRON_VISION_FACEPLATE", Material.NETHERITE_HELMET, "&cUltron-Vision Faceplate", TechnologyBranch.NANOTECH, 6, "Density-phasing crown built around an artificial Mind socket."),
+            d("ULTRON_INFINITY_ARMOR", Material.NETHERITE_CHESTPLATE, "&5Ultron Infinity Armor", TechnologyBranch.COSMIC, 6, "Wearable six-domain synthezoid armor with extreme nanite manifestation."),
+            d("ULTRON_INFINITY_WINGS", Material.ELYTRA, "&dInfinity Sentinel Wings", TechnologyBranch.COSMIC, 6, "Hard-light wings formed from autonomous vibranium nanites."),
+            d("STARK_SACRIFICE_BUS", Material.REDSTONE_TORCH, "&cStark Sacrifice Bus", TechnologyBranch.NANOTECH, 5, "Cheap universal current path that cannot shield its wearer from a Snap."),
+            d("URU_STAR_CRUCIBLE", Material.NETHERITE_BLOCK, "&6Uru Star Crucible", TechnologyBranch.COSMIC, 6, "Contains Uru only while fed by a dying-star collector."),
+            d("MOLTEN_STAR_URU", Material.RAW_GOLD_BLOCK, "&6Molten Star-Forged Uru", TechnologyBranch.COSMIC, 6, "Impossible alloy condensed inside a stellar megastructure."),
+            d("DYING_STAR_PLASMA", Material.MAGMA_CREAM, "&eDying-Star Plasma", TechnologyBranch.COSMIC, 6, "Magnetically bottled photospheric matter."),
+            d("DYSON_SWARM_SEGMENT", Material.DAYLIGHT_DETECTOR, "&eDyson Swarm Segment", TechnologyBranch.COSMIC, 6, "One autonomous collector from a star-enclosing power swarm."),
+            d("STELLAR_FLUX_LENS", Material.TINTED_GLASS, "&bStellar Flux Lens", TechnologyBranch.COSMIC, 6, "Focuses a fraction of a star without vaporizing the forge."),
+            d("GRAVITON_CONTAINMENT_COIL", Material.BREEZE_ROD, "&bGraviton Containment Coil", TechnologyBranch.NANOTECH, 5, "Bends local inertia inside an owner-bound prison field."),
+            d("GOD_PRISON_POWER_CELL", Material.ECHO_SHARD, "&dGod-Prison Power Cell", TechnologyBranch.COSMIC, 6, "Consumable 4 GJ cell; larger protected volumes burn more cells."),
+            d("GOD_PRISON_FIELD_CORE", Material.VAULT, "&5God-Prison Field Core", TechnologyBranch.COSMIC, 6, "Right-click inside your ProtectionStone to toggle bounded survival flight."),
+            d("TESLA_STEP_EMITTER", Material.LIGHT_WEIGHTED_PRESSURE_PLATE, "&bTesla-Step Emitter", TechnologyBranch.ARC, 5, "Ionizes every airborne step into visible blue-white arcs."),
+            d("NANITE_AUREOLE_PROJECTOR", Material.HEART_OF_THE_SEA, "&dNanite Aureole Projector", TechnologyBranch.NANOTECH, 6, "Renders six adaptive orbital domains around advanced armor.")
         );
     }
 
@@ -154,6 +169,8 @@ public final class NanotechCatalog {
             m("TECHNO_ARCANE_FORGE", "Techno-Arcane Forge", TechnologyBranch.LATVERIAN, 4, 8192, 300_000_000, 100, "ARC component + arcane essence", "Latverian component", "Runic feedback", "Ward IV", "Grounds resonance; never breaks blocks", texture),
             m("COSMIC_SPECTROMETER", "Cosmic Fragment Spectrometer", TechnologyBranch.COSMIC, 5, 16384, 500_000_000, 180, "Unresolved fragment", "Domain signature", "Cosmic exposure", "Containment V", "Ejects sealed capsule", texture),
             m("SINGULARITY_GROWTH_CHAMBER", "Singularity Growth Chamber", TechnologyBranch.COSMIC, 6, 32768, 2_000_000_000, 300, "Domain signature + boss core", "Contained cosmic replica", "Reality collapse", "Containment VI", "Emergency stasis; zero block damage", texture)
+            ,m("STELLAR_SWARM_FABRICATOR", "Stellar Swarm Fabricator", TechnologyBranch.COSMIC, 6, 262144, 2_000_000_000, 240, "Nanocells + new element + solar lattice", "Dyson swarm segment", "Coronal induction", "Stellar VI", "Defocuses every lens and grounds collector charge", texture)
+            ,m("GRAVITON_FIELD_REGULATOR", "Graviton Field Regulator", TechnologyBranch.COSMIC, 6, 131072, 2_000_000_000, 180, "Graviton coils + prison cells + quantum processor", "God-Prison field core", "Inertial shear", "Owner region VI", "Revokes flight immediately and preserves every block", texture)
         );
     }
 
@@ -171,7 +188,9 @@ public final class NanotechCatalog {
             mb("GAMMA_CONTAINMENT_VAULT", "Gamma Containment Vault", TechnologyBranch.GAMMA, 5, "9x9x7", "Gamma Cyclotron", "96 Gamma Shielding Blocks, airlock, absorber crown", "32,768 J/t; 2 GJ", "Stabilizes boss-derived gamma isotopes", "Fails closed and converts the batch to inert waste"),
             mb("HULKBUSTER_ASSEMBLY_GANTRY", "Hulkbuster Assembly Gantry", TechnologyBranch.ARC, 5, "9x9x12", "Armor Assembly Bench", "4 cranes, 8 anchors, 16 servo columns", "16,384 J/t; 1 GJ", "Assembles heavy modular armor frames", "Owner lock, empty deployment volume and emergency brakes"),
             mb("ORBITAL_FABRICATION_SILO", "Orbital Fabrication Silo", TechnologyBranch.NANOTECH, 6, "13x13x15", "Nanoforge", "4 cleanroom decks, 12 power buses, launch aperture", "131,072 J/t; 12 GJ", "Builds Mark LXXXV and War Machine systems", "Aborts on entities in the assembly volume"),
-            mb("UNIVERSAL_INFINITY_FORGE", "Universal Infinity Forge", TechnologyBranch.COSMIC, 6, "17x17x9", "Infinity Forge Controller", "6 Focusing Rings, 12 pylons, Snap Matrix, containment dais", "524,288 J/t; 60 GJ", "Sockets six contained domains into one gauntlet", "Protection scan, six-domain SCRAM and zero block damage")
+            mb("UNIVERSAL_INFINITY_FORGE", "Universal Infinity Forge", TechnologyBranch.COSMIC, 6, "17x17x9", "Infinity Forge Controller", "6 Focusing Rings, 12 pylons, Snap Matrix, containment dais", "524,288 J/t; 60 GJ", "Sockets six contained domains into one gauntlet", "Protection scan, six-domain SCRAM and zero block damage"),
+            mb("DYING_STAR_DYSON_FOUNDRY", "Dying-Star Dyson Foundry", TechnologyBranch.COSMIC, 7, "41x41x29", "Stellar Swarm Fabricator", "48 swarm segments, 12 flux lenses, 8 magnetic crowns, Uru crucible", "2,097,152 J/t; 1.2 TJ", "Melts one batch of star-forged Uru for the safe original gauntlet", "Full SCRAM on lens loss; never ignites, explodes or mutates blocks"),
+            mb("GOD_PRISON_GRAVITON_CAGE", "God-Prison Graviton Cage", TechnologyBranch.COSMIC, 6, "ProtectionStone region", "Graviton Field Regulator", "8 coils, 4 Tesla steps, quantum governor, metered power-cell bank", "131,072 J/t base + protected-volume tariff", "Owner-only survival flight: +20/-10 blocks from activation altitude", "Revokes flight outside owner region, altitude envelope or available energy")
         );
     }
 

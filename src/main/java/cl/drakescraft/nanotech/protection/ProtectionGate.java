@@ -9,9 +9,25 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.UUID;
 
 /** Fail-closed WorldGuard/ProtectionStones gate for every large-area ability. */
 public final class ProtectionGate {
+    public record OwnedRegion(Location minimum, Location maximum) {
+        public boolean contains(Location location) {
+            return location.getWorld() != null && minimum.getWorld() != null
+                    && location.getWorld().equals(minimum.getWorld())
+                    && location.getX() >= minimum.getX() && location.getX() <= maximum.getX()
+                    && location.getY() >= minimum.getY() && location.getY() <= maximum.getY()
+                    && location.getZ() >= minimum.getZ() && location.getZ() <= maximum.getZ();
+        }
+
+        public long volume() {
+            return Math.max(1L, (maximum.getBlockX() - minimum.getBlockX() + 1L)
+                    * (maximum.getBlockY() - minimum.getBlockY() + 1L)
+                    * (maximum.getBlockZ() - minimum.getBlockZ() + 1L));
+        }
+    }
     private final DrakesNanotechPlugin plugin;
     private final Method protectionStoneLookup;
     private boolean warned;
@@ -34,6 +50,35 @@ public final class ProtectionGate {
             }
         }
         return true;
+    }
+
+    /** Resolves an owner-managed ProtectionStones cuboid; uncertainty denies activation. */
+    public OwnedRegion ownedProtection(Location location, UUID owner) {
+        if (protectionStoneLookup == null) return null;
+        try {
+            Object psRegion = protectionStoneLookup.invoke(null, location);
+            if (psRegion == null) return null;
+            Object region = psRegion.getClass().getMethod("getRegion").invoke(psRegion);
+            Object owners = region.getClass().getMethod("getOwners").invoke(region);
+            boolean owns = (boolean) owners.getClass().getMethod("contains", UUID.class).invoke(owners, owner);
+            if (!owns) return null;
+            Object min = region.getClass().getMethod("getMinimumPoint").invoke(region);
+            Object max = region.getClass().getMethod("getMaximumPoint").invoke(region);
+            int minX = ((Number) min.getClass().getMethod("x").invoke(min)).intValue();
+            int minY = ((Number) min.getClass().getMethod("y").invoke(min)).intValue();
+            int minZ = ((Number) min.getClass().getMethod("z").invoke(min)).intValue();
+            int maxX = ((Number) max.getClass().getMethod("x").invoke(max)).intValue();
+            int maxY = ((Number) max.getClass().getMethod("y").invoke(max)).intValue();
+            int maxZ = ((Number) max.getClass().getMethod("z").invoke(max)).intValue();
+            return new OwnedRegion(new Location(location.getWorld(), minX, minY, minZ),
+                    new Location(location.getWorld(), maxX, maxY, maxZ));
+        } catch (ReflectiveOperationException | RuntimeException | LinkageError error) {
+            if (!warned) {
+                warned = true;
+                plugin.getLogger().log(Level.WARNING, "ProtectionStone ownership lookup failed; prison fields fail closed.", error);
+            }
+            return null;
+        }
     }
 
     private List<Location> samples(Location center, double radius) {

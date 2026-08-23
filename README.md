@@ -14,12 +14,20 @@ isotopes, and only then begin the six cosmic artifact programs.
 The addon is built for servers that want spectacular abilities without accepting grief, random
 player kills, invisible attacks, or particle lag.
 
-## Heroes, Stark Systems & Infinity Engineering 0.2.0
+## Synthezoid Dominion & Graviton Engineering 0.3.0
 
-- **134 registered Slimefun entries:** components, weapons, hero equipment, suits and artifacts plus
-  12 fully documented machine heads.
-- **Six documented multiblocks:** cleanroom, New Element accelerator, gamma vault, Hulkbuster
-  gantry, orbital fabrication silo and the 17x17 Infinity Forge.
+- **151 registered Slimefun entries:** components, weapons, hero equipment, suits and artifacts plus
+  14 fully documented machine heads.
+- **Eight documented multiblocks:** including the 41x41x29 Dying-Star Dyson Foundry and the
+  ProtectionStone-sized God-Prison Graviton Cage.
+- **Ultron Infinity manifestation:** synthezoid tissue, Vision-derived density architecture,
+  six-domain armor, autonomous nanite wings and a bounded extreme particle aureole.
+- **Two genuinely different gauntlets:** Stark's simpler nanogauntlet performs the safe PvE Snap
+  but kills its carrier after universal discharge; the original Uru gauntlet survives because its
+  alloy is melted inside the dying-star foundry.
+- **God-Prison flight:** the owner activates survival flight only inside their ProtectionStone,
+  consumes physical 4 GJ cells according to real protected volume, and is hard-limited to 20 blocks
+  above and 10 below activation altitude. Leaving any boundary revokes flight immediately.
 - **Precision Stark engineering:** micro ARC capacitors, repulsor optics, flight gyros, vectoring
   nozzles, nanite injectors, thermal layers, power buses and servo clusters feed specialized armor.
 - **Expanded Iron armor program:** Mark VI, VII, XVII, XXV, XXXVIII, XLVI and LXXXV systems,
@@ -123,7 +131,7 @@ workspace it is installed from `Slimefun4-Drake` with `mvn -DskipTests install`.
 - **0.5 Infinity:** six independent boss chains, capsules, gauntlet GUI, safe PvE Snap and audit log.
 - **0.6 Beyond Time:** Pym/Kang engineering, temporal anchors and the Universal Forge.
 
-The catalog now covers 134 distinct registered entries; releases remain chapter-based so
+The catalog now covers 151 distinct registered entries; releases remain chapter-based so
 every recipe, PDC state, protection boundary and effect budget can be tested before production.
 
 ## License and trademarks

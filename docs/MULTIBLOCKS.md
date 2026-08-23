@@ -12,6 +12,8 @@ buffer before consuming ingredients. A failed validation never consumes a batch.
 | Hulkbuster Assembly Gantry | 5 | 9x9x12 | Armor Assembly Bench | 4 cranes, 8 anchors, 16 servo columns | 16,384 J/t; 1 GJ | Heavy modular frames | Owner lock, volume scan and emergency brakes |
 | Orbital Fabrication Silo | 6 | 13x13x15 | Nanoforge | 4 cleanroom decks, 12 buses, launch aperture | 131,072 J/t; 12 GJ | Mark LXXXV and War Machine systems | Aborts if an entity enters the assembly volume |
 | Universal Infinity Forge | 6 | 17x17x9 | Infinity Forge Controller | 6 Focusing Rings, 12 pylons, Snap Matrix, dais | 524,288 J/t; 60 GJ | Filled universal gauntlets | Region scan, six-domain SCRAM, zero block damage |
+| Dying-Star Dyson Foundry | 7 | 41x41x29 | Stellar Swarm Fabricator | 48 collectors, 12 lenses, 8 magnetic crowns, Uru crucible | 2,097,152 J/t; 1.2 TJ | Star-forged Uru | Lens-loss SCRAM; no fire, explosion or block mutation |
+| God-Prison Graviton Cage | 6 | ProtectionStone region | Graviton Field Regulator | 8 coils, 4 Tesla steps, governor, cell bank | 131,072 J/t + volume tariff | Owner survival flight | Owner-only, +20/-10 altitude, immediate boundary revocation |
 
 ## Construction contract
 

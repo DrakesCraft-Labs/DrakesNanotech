@@ -19,3 +19,7 @@ snap:
   cooldown-seconds: 600
   fraction: 0.5
   max-targets: 48
+god-prison:
+  # One power cell is consumed per this many protected blocks every cycle.
+  region-blocks-per-cell: 4096
+  cell-cycle-seconds: 15

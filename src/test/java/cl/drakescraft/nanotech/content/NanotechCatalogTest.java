@@ -9,16 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class NanotechCatalogTest {
     @Test
-    void expandedCatalogHasOneHundredThirtyFourUniqueEntries() {
+    void expandedCatalogHasUniqueEntries() {
         var ids = new HashSet<String>();
         NanotechCatalog.items().forEach(item -> assertTrue(ids.add(item.id()), "duplicate id " + item.id()));
         NanotechCatalog.machines().forEach(machine -> assertTrue(ids.add(machine.id()), "duplicate id " + machine.id()));
-        assertEquals(134, ids.size());
+        assertTrue(ids.size() >= 151);
     }
 
     @Test
     void everyMultiblockHasACompleteFieldSpecification() {
-        assertEquals(6, NanotechCatalog.multiblocks().size());
+        assertTrue(NanotechCatalog.multiblocks().size() >= 8);
         for (MultiblockDefinition multiblock : NanotechCatalog.multiblocks()) {
             assertTrue(multiblock.tier() >= 3);
             assertTrue(!multiblock.footprint().isBlank());

@@ -31,15 +31,18 @@ public final class NanotechWeaponListener implements Listener {
     private final ProtectionGate protectionGate;
     private final CataclysmEffectService cataclysms;
     private final SnapEffectService snaps;
+    private final GodPrisonFieldService godPrisonFields;
     private final Map<UUID, Long> cooldowns = new HashMap<>();
     private final Map<UUID, Long> snapCooldowns = new HashMap<>();
 
-    public NanotechWeaponListener(DrakesNanotechPlugin plugin, NanotechContent content, ProtectionGate protectionGate) {
+    public NanotechWeaponListener(DrakesNanotechPlugin plugin, NanotechContent content,
+                                  ProtectionGate protectionGate, GodPrisonFieldService godPrisonFields) {
         this.plugin = plugin;
         this.content = content;
         this.protectionGate = protectionGate;
         this.cataclysms = new CataclysmEffectService(plugin);
         this.snaps = new SnapEffectService(plugin);
+        this.godPrisonFields = godPrisonFields;
     }
 
     @EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
@@ -50,7 +53,12 @@ public final class NanotechWeaponListener implements Listener {
         if (id.isBlank()) return;
         if (id.equals("INFINITY_GAUNTLET") || id.equals("NANO_INFINITY_GAUNTLET")) {
             event.setCancelled(true);
-            snap(player);
+            snap(player, id.equals("NANO_INFINITY_GAUNTLET"));
+            return;
+        }
+        if (id.equals("GOD_PRISON_FIELD_CORE")) {
+            event.setCancelled(true);
+            godPrisonFields.toggle(player);
             return;
         }
         long now = System.currentTimeMillis();
@@ -79,7 +87,7 @@ public final class NanotechWeaponListener implements Listener {
     }
 
     /** Executes a long-cooldown Snap only after a buffered protection scan succeeds. */
-    private void snap(Player player) {
+    private void snap(Player player, boolean sacrificialStarkGauntlet) {
         double radius = Math.max(8D, plugin.getConfig().getDouble("snap.radius", 42D));
         if (!protectionGate.allowLargeAbility(player, player.getLocation(), radius)) return;
         long now = System.currentTimeMillis();
@@ -90,6 +98,14 @@ public final class NanotechWeaponListener implements Listener {
         }
         snapCooldowns.put(player.getUniqueId(), now + Math.max(60, plugin.getConfig().getInt("snap.cooldown-seconds", 600)) * 1000L);
         snaps.snap(player);
+        if (sacrificialStarkGauntlet) {
+            player.sendTitle("§c§lUNIVERSAL DISCHARGE", "§7The nanogauntlet cannot contain it", 5, 45, 20);
+            plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
+                if (!player.isOnline() || player.isDead()) return;
+                player.getWorld().spawnParticle(Particle.ASH, player.getLocation().add(0, 1, 0), 220, 0.55, 0.9, 0.55, 0.04);
+                player.setHealth(0D);
+            }, 55L);
+        }
     }
 
     /** Draws an outbound and returning kinetic path through at most six mobs. */
