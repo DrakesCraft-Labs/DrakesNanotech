@@ -50,7 +50,7 @@ public final class NanotechWeaponListener implements Listener {
         if (!event.getAction().isRightClick()) return;
         Player player = event.getPlayer();
         String id = content.idOf(event.getItem());
-        if (id.isBlank()) return;
+        if (!isAbilityItem(id)) return;
         if (id.equals("INFINITY_GAUNTLET") || id.equals("NANO_INFINITY_GAUNTLET")) {
             event.setCancelled(true);
             snap(player, id.equals("NANO_INFINITY_GAUNTLET"));
@@ -84,6 +84,23 @@ public final class NanotechWeaponListener implements Listener {
             plugin.getLogger().log(java.util.logging.Level.WARNING, "Ability execution failed safely for " + id, error);
             player.sendMessage("§6DrakesNanotech §8· §cThe ability aborted safely.");
         }
+    }
+
+    /**
+     * Limits this listener to the explicit Nanotech weapons it owns. {@link NanotechContent#idOf}
+     * returns IDs for every Slimefun addon, so treating any non-empty ID as a weapon cancelled
+     * placement of all Slimefun machines before Bukkit could emit BlockPlaceEvent.
+     */
+    static boolean isAbilityItem(String id) {
+        return switch (id) {
+            case "INFINITY_GAUNTLET", "NANO_INFINITY_GAUNTLET", "GOD_PRISON_FIELD_CORE",
+                 "REPULSOR_EMITTER", "WEB_SHOOTER", "HAWKEYE_COMPOUND_BOW", "SONIC_ARROW",
+                 "WIDOW_BITE_GAUNTLET", "CAPTAIN_SHIELD", "STEALTH_CAPTAIN_SHIELD",
+                 "UNIBEAM_LENS", "STARK_UNIBEAM_ASSEMBLY", "ORBITAL_SKY_LANCE",
+                 "ULTRON_INFINITY_BEAM", "CELESTIAL_NULLIFIER", "REALITY_FRACTURE_DEVICE",
+                 "DIMENSIONAL_BREACH_CHARGE", "SINGULARITY_WARHEAD" -> true;
+            default -> false;
+        };
     }
 
     /** Executes a long-cooldown Snap only after a buffered protection scan succeeds. */
