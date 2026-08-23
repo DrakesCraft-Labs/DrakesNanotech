@@ -168,9 +168,11 @@ public final class NanotechContent {
         return item != null && item.getId().matches("(POWER|SPACE|REALITY|MIND|TIME|SOUL)_STONE");
     }
 
+    /** Returns an ID only when the stack belongs to this addon, never for another Slimefun addon. */
     public String idOf(ItemStack stack) {
         SlimefunItem item = SlimefunItem.getByItem(stack);
-        return item == null ? "" : item.getId();
+        if (item == null || !items.containsKey(item.getId())) return "";
+        return item.getId();
     }
 
     public int itemCount() { return NanotechCatalog.items().size() + NanotechCatalog.machines().size(); }
