@@ -11,3 +11,5 @@ safety:
   damage-players: false
   break-blocks: false
   max-entities-per-effect: 48
+  protected-region-buffer: 24
+  protected-message: "&6DrakesNanotech &8· &cYou are inside or near a protected region. &7This ability cannot be used here, even inside your own protection."

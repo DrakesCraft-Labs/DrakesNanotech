@@ -9,11 +9,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class NanotechCatalogTest {
     @Test
-    void launchCatalogHasSixtyUniqueEntries() {
+    void expandedCatalogHasNinetyThreeUniqueEntries() {
         var ids = new HashSet<String>();
         NanotechCatalog.items().forEach(item -> assertTrue(ids.add(item.id()), "duplicate id " + item.id()));
         NanotechCatalog.machines().forEach(machine -> assertTrue(ids.add(machine.id()), "duplicate id " + machine.id()));
-        assertEquals(60, ids.size());
+        assertEquals(93, ids.size());
     }
 
     @Test

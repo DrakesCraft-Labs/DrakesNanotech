@@ -14,9 +14,9 @@ isotopes, and only then begin the six cosmic artifact programs.
 The addon is built for servers that want spectacular abilities without accepting grief, random
 player kills, invisible attacks, or particle lag.
 
-## Foundations 0.1.0
+## Heroes & Cataclysms 0.2.0
 
-- **60 registered Slimefun entries:** 48 materials, weapons, suit components and artifacts plus
+- **93 registered Slimefun entries:** components, weapons, hero equipment, suits and artifacts plus
   12 fully documented machine heads.
 - **Seven branches:** Salvaged Technology, ARC, Nanotech, Gamma, Wakandan Engineering,
   Latverian Techno-Arcana and Cosmic Containment.
@@ -26,6 +26,16 @@ player kills, invisible attacks, or particle lag.
   distortion and a carrier-only terminal effect. Capsules and gauntlets are the intended answer.
 - **Launch suit program:** Mark I, Mark III, Mark V, Mark XLII, Mark L, Hulkbuster and Rescue
   components establish distinct future mechanics instead of cosmetic recolors.
+- **Spider program:** Classic, Stealth and Iron Spider suit foundations, Web Shooter, Spider-Sense
+  node and articulated waldo modules.
+- **Tactical heroes:** Hawkeye smart bow and five arrow systems; Widow's Bite, electroshock baton,
+  line launcher and cloaking mesh.
+- **Ultron program:** sandboxed AI core, primary shell, sentinel pod, Infinity convergence core and
+  a creature-only sky-splitting beam.
+- **Mystic engineering:** Sling Ring, levitation cloak, Crimson Bands, Mirror Dimension prism,
+  Chronal Eye replica and reversible-looking reality fractures.
+- **Cinematic WMDs:** Orbital Sky Lance, Celestial Nullifier, Singularity Warhead, Nanite
+  Disassembler and Dimensional Breach Charge—spectacular effects with zero block mutation.
 - **Machine-grade documentation:** every machine item states tier, branch, J/t, buffer, duration,
   batch size, input, output, hazard, containment and exact shutdown behavior.
 - **Original branding:** production-ready icon and wide banner are included under `docs/assets`.
@@ -63,6 +73,9 @@ See the complete [Machine Field Manual](docs/MACHINES.md).
 
 - Players are never valid Repulsor or future Snap targets.
 - No ability calls Bukkit block explosions.
+- Every large-area weapon scans WorldGuard and ProtectionStones before rendering or damaging.
+- A configurable 24-block buffer rejects use near any protected region, including the user's own.
+- Protection lookup errors fail closed: the weapon aborts instead of guessing that an area is safe.
 - Cosmic exposure damages only the person deliberately holding the bare artifact.
 - Effects use bounded loops and do not load chunks.
 - Stable IDs use Slimefun/PDC, never display names.
@@ -89,11 +102,12 @@ workspace it is installed from `Slimefun4-Drake` with `mvn -DskipTests install`.
 
 ## Roadmap
 
-- **0.2 House of Stark:** real energy storage, suit-up sequences, flight heat, Unibeam, shields,
-  micro-missiles, War Machine and Rescue.
+- **0.2 Heroes and House of Stark:** real energy storage, suit-up sequences, Spider traversal,
+  tactical arrow cartridges, flight heat, Unibeam, shields, War Machine and Rescue.
 - **0.3 Gamma Protocol:** operating processors, exposure storage, controlled Banner mutation,
   Hulkbuster modules and gamma boss drops.
-- **0.4 Sovereign Technologies:** Wakandan kinetic weave, Doom forge, Doombots and synthezoids.
+- **0.4 Sovereign Technologies:** Wakandan kinetic weave, Doom forge, Doombots, Ultron encounters,
+  synthezoids and mystic engineering.
 - **0.5 Infinity:** six independent boss chains, capsules, gauntlet GUI, safe PvE Snap and audit log.
 - **0.6 Beyond Time:** Pym/Kang engineering, temporal anchors and the Universal Forge.
 

@@ -3,6 +3,8 @@ package cl.drakescraft.nanotech;
 import cl.drakescraft.nanotech.content.NanotechContent;
 import cl.drakescraft.nanotech.gameplay.CosmicExposureListener;
 import cl.drakescraft.nanotech.gameplay.NanotechWeaponListener;
+import cl.drakescraft.nanotech.gameplay.HeroSuitListener;
+import cl.drakescraft.nanotech.protection.ProtectionGate;
 import com.github.drakescraft_labs.slimefun4.api.SlimefunAddon;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -21,7 +23,9 @@ public final class DrakesNanotechPlugin extends JavaPlugin implements SlimefunAd
             saveDefaultConfig();
             content = new NanotechContent(this);
             content.registerAll();
-            getServer().getPluginManager().registerEvents(new NanotechWeaponListener(this, content), this);
+            ProtectionGate protectionGate = new ProtectionGate(this);
+            getServer().getPluginManager().registerEvents(new NanotechWeaponListener(this, content, protectionGate), this);
+            getServer().getPluginManager().registerEvents(new HeroSuitListener(this, content), this);
             getServer().getPluginManager().registerEvents(new CosmicExposureListener(this, content), this);
             getLogger().info("DrakesNanotech loaded " + content.itemCount() + " items across " + content.machineCount() + " documented machines.");
         } catch (RuntimeException | LinkageError error) {
