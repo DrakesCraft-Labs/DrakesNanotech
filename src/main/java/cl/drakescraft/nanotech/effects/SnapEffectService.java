@@ -37,7 +37,7 @@ public final class SnapEffectService {
                 if (tick <= 36) renderStoneCharge(actor, tick);
                 if (tick == 40) {
                     actor.getWorld().playSound(origin, Sound.BLOCK_END_PORTAL_SPAWN, 2F, 0.55F);
-                    actor.getWorld().spawnParticle(Particle.FLASH, origin, 3);
+                    actor.getWorld().spawnParticle(Particle.FLASH, origin, 3, 0.1, 0.1, 0.1, 0.0, Color.WHITE);
                 }
                 if (tick >= 40 && tick <= 58 && tick % 3 == 0) renderWave(origin, radius * (tick - 38D) / 20D);
                 if (tick == 62) targets.forEach(target -> beginDisintegration(actor, target));

@@ -258,7 +258,7 @@ public final class NanotechWeaponListener implements Listener {
         if (hit == null || !(hit.getHitEntity() instanceof LivingEntity target)) return;
         target.damage(plugin.getConfig().getDouble("effects.repulsor-damage", 10D), player);
         target.setVelocity(target.getVelocity().add(direction.multiply(0.75)));
-        target.getWorld().spawnParticle(Particle.FLASH, target.getLocation().add(0, 1, 0), 1);
+        target.getWorld().spawnParticle(Particle.FLASH, target.getLocation().add(0, 1, 0), 1, 0.0, 0.0, 0.0, 0.0, Color.WHITE);
         target.getWorld().spawnParticle(Particle.END_ROD, target.getLocation().add(0, 1, 0), 24, 0.35, 0.55, 0.35, 0.05);
     }
 
