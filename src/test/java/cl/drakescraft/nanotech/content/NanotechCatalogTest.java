@@ -63,4 +63,16 @@ class NanotechCatalogTest {
                     || NanotechCatalog.machines().stream().anyMatch(machine -> machine.branch() == branch));
         }
     }
+
+    @Test
+    void vanillaKeyLookalikesStayDocumented() {
+        var keyMaterials = java.util.Set.of(org.bukkit.Material.TRIAL_KEY, org.bukkit.Material.OMINOUS_TRIAL_KEY);
+        var lookalikes = NanotechCatalog.items().stream()
+                .filter(item -> keyMaterials.contains(item.material()))
+                .map(ContentDefinition::id)
+                .collect(java.util.stream.Collectors.toSet());
+        // NanotechWeaponListener.onVaultInsert exists because these items can be fed to a vanilla
+        // vault; if the catalog stops using key materials the guard can go with them.
+        assertEquals(java.util.Set.of("UNIVERSAL_FORGE_KEY", "ULTRON_AI_CORE"), lookalikes);
+    }
 }

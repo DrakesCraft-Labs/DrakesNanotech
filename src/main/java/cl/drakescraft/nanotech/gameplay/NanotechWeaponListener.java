@@ -7,6 +7,7 @@ import cl.drakescraft.nanotech.effects.CombatTargets;
 import cl.drakescraft.nanotech.effects.SnapEffectService;
 import cl.drakescraft.nanotech.protection.ProtectionGate;
 import org.bukkit.Color;
+import org.bukkit.Material;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
@@ -16,6 +17,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.util.RayTraceResult;
 import org.bukkit.util.Vector;
@@ -84,6 +86,21 @@ public final class NanotechWeaponListener implements Listener {
             plugin.getLogger().log(java.util.logging.Level.WARNING, "Ability execution failed safely for " + id, error);
             player.sendMessage("§6DrakesNanotech §8· §cThe ability aborted safely.");
         }
+    }
+
+    /**
+     * Keeps Nanotech items out of vanilla vaults. UNIVERSAL_FORGE_KEY and ULTRON_AI_CORE are built
+     * on TRIAL_KEY and OMINOUS_TRIAL_KEY, so a right click on a vault either burns a tier 5/6 item
+     * for vanilla loot or silently does nothing, which players report as a broken key. Cancelling
+     * the interaction keeps the item in the inventory and says why.
+     */
+    @EventHandler(priority = EventPriority.LOWEST, ignoreCancelled = true)
+    public void onVaultInsert(PlayerInteractEvent event) {
+        if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
+        if (event.getClickedBlock() == null || event.getClickedBlock().getType() != Material.VAULT) return;
+        if (event.getItem() == null || content.idOf(event.getItem()).isEmpty()) return;
+        event.setCancelled(true);
+        event.getPlayer().sendActionBar("§cThis is a Nanotech item, not a trial key");
     }
 
     /**
