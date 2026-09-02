@@ -98,9 +98,21 @@ public final class NanotechWeaponListener implements Listener {
     public void onVaultInsert(PlayerInteractEvent event) {
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) return;
         if (event.getClickedBlock() == null || event.getClickedBlock().getType() != Material.VAULT) return;
-        if (event.getItem() == null || content.idOf(event.getItem()).isEmpty()) return;
+        if (event.getItem() == null) return;
+        String id = content.idOf(event.getItem());
+        if (id.isEmpty()) return;
         event.setCancelled(true);
-        event.getPlayer().sendActionBar("§cThis is a Nanotech item, not a trial key");
+        event.getPlayer().sendMessage(vaultRejectionMessage(id));
+    }
+
+    /**
+     * Explains the cancelled vault click in chat instead of the action bar. The rejected items look
+     * exactly like a vanilla trial key, so an action bar line that scrolls away leaves the player
+     * believing the key itself is broken.
+     */
+    static String vaultRejectionMessage(String id) {
+        return "§6DrakesNanotech §8· §c" + id
+                + " is a Nanotech item, not a trial key. §7The vault ignores it and the item stays in your inventory.";
     }
 
     /**

@@ -19,4 +19,14 @@ class NanotechWeaponListenerTest {
         assertFalse(NanotechWeaponListener.isAbilityItem("NANOFORGE"));
         assertFalse(NanotechWeaponListener.isAbilityItem(""));
     }
+
+    @Test
+    void vaultRejectionNamesTheItemAndKeepsIt() {
+        String message = NanotechWeaponListener.vaultRejectionMessage("UNIVERSAL_FORGE_KEY");
+
+        assertTrue(message.contains("UNIVERSAL_FORGE_KEY"));
+        assertTrue(message.contains("not a trial key"));
+        assertTrue(message.contains("stays in your inventory"));
+        assertTrue(message.startsWith("§6DrakesNanotech"));
+    }
 }
